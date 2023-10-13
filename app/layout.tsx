@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { DarkModeProvider, IsDarkModeContext } from './dark_mode_context'
-import { PaletteMode, ThemeProvider } from '@mui/material';
+import { CssBaseline, PaletteMode, StyledEngineProvider, ThemeProvider } from '@mui/material';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -42,7 +42,7 @@ export function RootChild({
 }) {
   const darkModeContext = useContext(IsDarkModeContext)
   var darkMode = darkModeContext.enabled
-  console.log("calling root: is dm " + darkMode )
+  console.log("calling root: is  dm " + darkMode )
   var modeType : PaletteMode = darkMode ? 'dark': 'light'
   var darkTheme = createTheme({
     palette: {
@@ -50,16 +50,19 @@ export function RootChild({
     },
   });
   const htmlClass = darkMode ? "dark" : ""
-  console.log("local storage: " + localStorage)
+  
 return (
-  <ThemeProvider theme={darkTheme} >
-  <html lang="th" className={htmlClass}>
-  <body className={inter.className}>
-  <div className="bg-white dark:bg-black">
-
-    {children}
-    </div></body>
-</html>
-</ThemeProvider>
+  <StyledEngineProvider injectFirst>
+    <ThemeProvider theme={darkTheme} >
+      <html lang="th" className={htmlClass}>
+        <CssBaseline />
+        <body className={inter.className}>
+          <div className='bg-white darkMode:bg-black'>
+            {children}
+          </div>
+        </body>
+    </html>
+  </ThemeProvider>
+</StyledEngineProvider>
 );
 }

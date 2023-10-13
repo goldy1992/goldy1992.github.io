@@ -10,8 +10,9 @@ export default function DarkModeButton() {
 
     const lightModeIcon =   ( 
       <IconButton onClick={() => {dm.setIsDarkMode(false)
-      console.log("setting dm false") }} > 
-          <LightModeIcon/>
+          console.log("setting dm false")
+           }} > 
+          <LightModeIcon />
         </IconButton>
     );
 
