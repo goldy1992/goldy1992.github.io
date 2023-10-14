@@ -34,6 +34,8 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
+const terminal_cursor = ">"
+
 export default function Page() {
   return (
     // <ThemeProvider theme={defaultTheme}>
@@ -78,16 +80,35 @@ export function Album() {
           }}
         >
           <Container maxWidth="sm">
+
+          <div className='flex flex-row flex-nowrap space-x-4 justify-start'>
+     
             <Typography
-              component="h1"
-              variant="h2"
-              align="center"
+              component="h3"
+              variant="h3"
+              align="left"
               color="text.primary"
-              gutterBottom
-            >
-              Album layout
-            </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" paragraph>
+              className='flex-none'
+            >{terminal_cursor}</Typography>
+           
+           
+            <Typography
+              component="h3"
+              variant="h3"
+              align="left"
+              color="text.primary"
+              className='typewriter flex-none'
+     
+            >full-stack solutions.
+              </Typography>
+      
+              <div className='grow'></div>
+          </div>
+           
+             
+              
+
+            <Typography variant="h6" align="center" color="text.secondary" paragraph>
               Something short and leading about the collection below—its contents,
               the creator, etc. Make it short and sweet, but not too short so folks
               don&apos;t simply skip over it entirely.
@@ -103,13 +124,16 @@ export function Album() {
             </Stack>
           </Container>
         </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
+        <Container sx={{ py: 8 ,
+         bgcolor: 'background.paper'}} maxWidth="md">  
+           
           {/* End hero unit */}
           <Grid container spacing={4}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                  className='transition ease-in-out hover:scale-110'
                 >
                   <CardMedia
                     component="div"
@@ -117,15 +141,14 @@ export function Album() {
                       // 16:9
                       pt: '56.25%',
                     }}
-                    image="https://source.unsplash.com/random?wallpapers"
+                    image="https://github.com/goldy1992/Mp3Player/blob/master/app/src/main/res/mipmap-hdpi/headphone_icon_foreground.png?raw=true"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                    <Typography gutterBottom variant="h5" component="h2" >
+                      MP3 Player
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the
-                      content.
+                      An open source Android media player.
                     </Typography>
                   </CardContent>
                   <CardActions>
