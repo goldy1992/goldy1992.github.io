@@ -1,12 +1,10 @@
 'use client'
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Image from 'next/image'
 import Stack from '@mui/material/Stack';
@@ -14,7 +12,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import DarkModeButton from './dark_mode_button';
 import { IsDarkModeContext } from './dark_mode_context';
 
@@ -50,8 +48,8 @@ export function Album() {
 
   return (
       <main>    
-      {/* <AppBar position="relative"  > */}
-        <div className="flex flex-row flex-nowrap items-center space-x-2.5 px-4">
+    
+        <div className="flex flex-row flex-nowrap items-center space-x-2.5 px-4 bg-white dark:bg-black">
           <Image
             src={github_image}
             alt="Github"
@@ -70,8 +68,6 @@ export function Album() {
           <DarkModeButton />
         </div>
         </div>
-        {/* </Toolbar> */}
-      {/* </AppBar> */}
       <main>
         {/* Hero unit */}
         <Box
