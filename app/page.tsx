@@ -15,6 +15,7 @@ import Link from '@mui/material/Link';
 import { createTheme } from '@mui/material/styles';
 import DarkModeButton from './dark_mode_button';
 import { IsDarkModeContext } from './dark_mode_context';
+import TypewriterTitle from './typewriter';
 
 function Copyright() {
   return (
@@ -29,19 +30,16 @@ function Copyright() {
   );
 }
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const cards = [1];
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-const terminal_cursor = ">"
+
 
 export default function Page() {
   return (
-    // <ThemeProvider theme={defaultTheme}>
-    //    <CssBaseline />
-        <Album />
-        // </ThemeProvider>
+    <Album />
   );
 }
 export function Album() {
@@ -81,29 +79,30 @@ export function Album() {
         >
           <Container maxWidth="sm">
 
-          <div className='flex flex-row flex-nowrap space-x-4 justify-start'>
+          {/* <div className='flex flex-row space-x-2 justify-start items-center'> */}
      
-            <Typography
-              component="h3"
-              variant="h3"
+          <TypewriterTitle fullText='full-stack solutions.' />
+            {/* <Typography
+              component="h5"
+              variant="h5"
               align="left"
               color="text.primary"
-              className='flex-none'
+              className='flex-none font-mono'
             >{terminal_cursor}</Typography>
            
            
             <Typography
-              component="h3"
-              variant="h3"
+              component="h5"
+              variant="h5"
               align="left"
               color="text.primary"
-              className='typewriter flex-none'
+              className='typewriter flex-none font-mono'
      
-            >full-stack solutions.
-              </Typography>
+            >
+              </Typography> */}
       
-              <div className='grow'></div>
-          </div>
+              {/* <div className='grow'></div> */}
+          {/* </div> */}
            
              
               

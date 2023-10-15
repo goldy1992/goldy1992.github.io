@@ -29,9 +29,9 @@ body {
 
 @layer utilities {
   
-  h3.typewriter  {
+  h5.typewriter_old  {
     overflow: hidden; /* Ensures the content is not revealed until the animation */
-    border-right: .15em solid orange; /* The typwriter cursor */
+    border-right: .10em solid orange; /* The typwriter cursor */
     white-space: nowrap; /* Keeps the content on a single line */
     margin: 0 auto; /* Gives that scrolling effect as the typing happens */
     letter-spacing: .15em; /* Adjust as needed */
@@ -60,5 +60,25 @@ body {
     from, to { border-color: transparent }
     50% { border-color: orange; }
   }
+
+
+
+  /* p blinker impl */
+    /* The typewriter cursor effect */
+    @keyframes p-blink-caret {
+      from, to { opacity: 0 }
+      50% { opacity: 100; }
+    }
+
+  p.blinker {
+    animation: 
+      p-blink-caret 1s step-end infinite;
+  }
+
+
+
 }
+
+
+
 
