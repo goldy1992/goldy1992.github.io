@@ -6,17 +6,18 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
-import Image from 'next/image'
+
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme } from '@mui/material/styles';
-import DarkModeButton from './dark_mode_button';
 import { IsDarkModeContext } from './dark_mode_context';
 import TypewriterTitle from './typewriter';
 import { motion, useScroll } from "framer-motion"
+import NewAppBar from './new_app_bar';
+
 
 function Copyright() {
   return (
@@ -40,37 +41,18 @@ const defaultTheme = createTheme();
 
 export default function Page() {
   return (
-    <Album />
+    <PageContent />
   );
 }
-export function Album() {
+export function PageContent() {
   const dm = React.useContext(IsDarkModeContext);
-  const github_image = dm.enabled ? "./github-mark/github-mark-white.svg" : "./github-mark/github-mark.svg"
   const { scrollYProgress } = useScroll();
 
   return (
       <main>    
-       <motion.div style={{ scaleX: scrollYProgress }} className='origin-top-left fixed place-self-start top-0 left-0 right-0 h-1 bg-orange-700' />
-        <div className="flex flex-row flex-nowrap items-center space-x-2.5 px-4 bg-white dark:bg-black">
-          <Image
-            src={github_image}
-            alt="Github"
-            className="flex-none"
-            width={25}
-            height={25}
-            priority
-          />
-   
-        <Typography variant="h6" color="inherit" className="dark:text-white text-black" noWrap>
-              goldy1992
-        </Typography> 
-      
-        <div className='grow'/>
-        <div>
-          <DarkModeButton />
-        </div>
-        </div>
-      <main>
+       <motion.div style={{ scaleX: scrollYProgress }} className='origin-bottom-left fixed place-self-start bottom-0 left-0 right-0 h-1 bg-black dark:bg-white' />
+        <NewAppBar /> 
+
         {/* Hero unit */}
         <Box
           sx={{
@@ -139,7 +121,7 @@ export function Album() {
             ))}
           </Grid>
         </Container>
-      </main>
+ 
       {/* Footer */}
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
         <Typography variant="h6" align="center" gutterBottom>
@@ -159,3 +141,14 @@ export function Album() {
     </main>
   );
 }
+
+interface Props {
+  /**
+   * Injected by the documentation to work in an iframe.
+   * You won't need it on your project.
+   */
+  window?: () => Window;
+  children: React.ReactElement;
+}
+
+
