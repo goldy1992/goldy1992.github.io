@@ -16,6 +16,7 @@ import { createTheme } from '@mui/material/styles';
 import DarkModeButton from './dark_mode_button';
 import { IsDarkModeContext } from './dark_mode_context';
 import TypewriterTitle from './typewriter';
+import { motion, useScroll } from "framer-motion"
 
 function Copyright() {
   return (
@@ -45,10 +46,11 @@ export default function Page() {
 export function Album() {
   const dm = React.useContext(IsDarkModeContext);
   const github_image = dm.enabled ? "./github-mark/github-mark-white.svg" : "./github-mark/github-mark.svg"
+  const { scrollYProgress } = useScroll();
 
   return (
       <main>    
-    
+       <motion.div style={{ scaleX: scrollYProgress }} className='origin-top-left fixed place-self-start top-0 left-0 right-0 h-1 bg-orange-700' />
         <div className="flex flex-row flex-nowrap items-center space-x-2.5 px-4 bg-white dark:bg-black">
           <Image
             src={github_image}
@@ -79,38 +81,16 @@ export function Album() {
         >
           <Container maxWidth="sm">
 
-          {/* <div className='flex flex-row space-x-2 justify-start items-center'> */}
+    
      
           <TypewriterTitle fullText='full-stack solutions.' />
-            {/* <Typography
-              component="h5"
-              variant="h5"
-              align="left"
-              color="text.primary"
-              className='flex-none font-mono'
-            >{terminal_cursor}</Typography>
-           
-           
-            <Typography
-              component="h5"
-              variant="h5"
-              align="left"
-              color="text.primary"
-              className='typewriter flex-none font-mono'
-     
-            >
-              </Typography> */}
-      
-              {/* <div className='grow'></div> */}
-          {/* </div> */}
+        
            
              
               
 
-            <Typography variant="h6" align="center" color="text.secondary" paragraph>
-              Something short and leading about the collection below—its contents,
-              the creator, etc. Make it short and sweet, but not too short so folks
-              don&apos;t simply skip over it entirely.
+            <Typography variant="h6" align="center" color="text.secondary" className='pt-4' paragraph>
+              I work with Java/Kotlin, Android, React and AWS to design and implement enterprise solutions.
             </Typography>
             <Stack
               sx={{ pt: 4 }}
