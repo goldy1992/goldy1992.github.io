@@ -17,7 +17,9 @@ import { IsDarkModeContext } from './dark_mode_context';
 import TypewriterTitle from './typewriter';
 import { motion, useScroll } from "framer-motion"
 import NewAppBar from './new_app_bar';
+import WorkIcon from './icons/work_icon';
 
+const typing_text = "I'm a full-stack developer."
 
 function Copyright() {
   return (
@@ -62,8 +64,8 @@ export function PageContent() {
           }}
         >
 
-        <div className="p-6 max-w-sm mx-auto bg-secondaryContainer-light dark:bg-secondaryContainer-dark rounded-xl shadow-lg flex items-center space-x-4">
-          <TypewriterTitle fullText="I'm a full-stack developer." /> 
+        <div className="p-2 max-w-sm mx-auto bg-secondaryContainer-light dark:bg-secondaryContainer-dark rounded-xl shadow-lg flex items-center space-x-2">
+          <TypewriterTitle text={typing_text} infinite={true} className="flex-none" /> 
         </div>
 
         <Stack
@@ -72,8 +74,13 @@ export function PageContent() {
           spacing={2}
           justifyContent="center"
         >
-          <button className='rounded uppercase p-2 bg-primary-light dark:bg-primary-dark text-color-onPrimary-light dark:text-color-onPrimary-dark'>Main call to action</button>
-          <Button variant="contained" className='bg-secondary-light dark:bg-secondary-dark text-color-onSecondary-light dark:text-color-onSecondary-dark'>Secondary action</Button>
+          <button className="uppercase bg-sky-400 dark:bg-sky-800 dark:hover:bg-sky-700 hover:drow-shadow-md hover:bg-sky-500 hover:cursor-pointer text-gray-800 dark:text-gray-200 font-bold py-2 px-4 rounded inline-flex items-center border-0">
+            <WorkIcon className="fill-current w-4 h-4 mr-2" />
+            <span>Projects</span>
+          </button>
+
+
+          <button className='rounded uppercase p-2 border-0 bg-secondary-light dark:bg-secondary-dark text-color-onSecondary-light dark:text-color-onSecondary-dark'>Contact</button>
         </Stack>
         </Box>
         <Container sx={{ py: 8 ,
