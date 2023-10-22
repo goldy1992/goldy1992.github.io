@@ -56,37 +56,29 @@ export function PageContent() {
         {/* Hero unit */}
         <Box
           sx={{
-            bgcolor: 'background.paper',
+            // bgcolor: 'background.paper',
             pt: 8,
             pb: 6,
           }}
         >
-          <Container maxWidth="sm">
 
-    
-     
-          <TypewriterTitle fullText='full-stack solutions.' />
-        
-           
-             
-              
+        <div className="p-6 max-w-sm mx-auto bg-secondaryContainer-light dark:bg-secondaryContainer-dark rounded-xl shadow-lg flex items-center space-x-4">
+          <TypewriterTitle fullText="I'm a full-stack developer." /> 
+        </div>
 
-            <Typography variant="h6" align="center" color="text.secondary" className='pt-4' paragraph>
-              I work with Java/Kotlin, Android, React and AWS to design and implement enterprise solutions.
-            </Typography>
-            <Stack
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            >
-              <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button>
-            </Stack>
-          </Container>
+        <Stack
+          sx={{ pt: 4 }}
+          direction="row"
+          spacing={2}
+          justifyContent="center"
+        >
+          <button className='rounded uppercase p-2 bg-primary-light dark:bg-primary-dark text-color-onPrimary-light dark:text-color-onPrimary-dark'>Main call to action</button>
+          <Button variant="contained" className='bg-secondary-light dark:bg-secondary-dark text-color-onSecondary-light dark:text-color-onSecondary-dark'>Secondary action</Button>
+        </Stack>
         </Box>
         <Container sx={{ py: 8 ,
-         bgcolor: 'background.paper'}} maxWidth="md">  
+      //   bgcolor: 'background.paper'
+         }} maxWidth="md">  
            
           {/* End hero unit */}
           <Grid container spacing={4}>
@@ -123,7 +115,8 @@ export function PageContent() {
         </Container>
  
       {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
+      <Box sx={{ //bgcolor: 'background.paper', 
+      p: 6 }} component="footer">
         <Typography variant="h6" align="center" gutterBottom>
           Footer
         </Typography>

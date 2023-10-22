@@ -27,58 +27,6 @@ body {
 }
 
 
-@layer utilities {
-  
-  h5.typewriter_old  {
-    overflow: hidden; /* Ensures the content is not revealed until the animation */
-    border-right: .10em solid orange; /* The typwriter cursor */
-    white-space: nowrap; /* Keeps the content on a single line */
-    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-    letter-spacing: .15em; /* Adjust as needed */
-    animation: 
-      typing 3.5s steps(20, end) infinite,
-      blink-caret 1s step-end infinite;
-  }
-
-  /* The typing effect */
-  @keyframes typing {
-    0% {
-      width: 0;
-      /* from { width: 0 }
-      to { width: 100% } */
-    }
-  
-    40% {
-      width: 100%
-      /* from { width: 100% }
-      to { width: 100% } */
-    }
-  }
-
-  /* The typewriter cursor effect */
-  @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: orange; }
-  }
-
-
-
-  /* p blinker impl */
-    /* The typewriter cursor effect */
-    @keyframes p-blink-caret {
-      from, to { opacity: 0 }
-      50% { opacity: 100; }
-    }
-
-  p.blinker {
-    animation: 
-      p-blink-caret 1s step-end infinite;
-  }
-
-
-
-}
-
 
 
 

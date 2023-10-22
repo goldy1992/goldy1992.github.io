@@ -12,7 +12,6 @@ export default function TypewriterTitle({fullText}: {fullText: string})  {
 
     return (
         <div className='flex flex-row flex-nowrap items-center'>
-            {/* <p className="flex-none font-mono pr-2">{terminal_cursor}</p> */}
             <Typography
               component="p"
               variant="subtitle1"
@@ -21,7 +20,6 @@ export default function TypewriterTitle({fullText}: {fullText: string})  {
               className='flex-none pr-2 font-mono'
             >{terminal_cursor}</Typography>
             
-            {/* <p className='flex-none font-mono' id={text_update_id}></p> */}
             <Typography
               component="p"
               variant="subtitle1"
@@ -38,7 +36,6 @@ export default function TypewriterTitle({fullText}: {fullText: string})  {
             className='flex-none blinker font-mono'
           >|</Typography>
 
-            {/* <p className='blinker flex-none'>|</p> */}
         </div>
     );
 }
@@ -49,7 +46,6 @@ function typewriter(fullText: string, currentTextState: string) {
     let newText= typingComplete ? "" : currentTextState + fullText.charAt(currentTextState.length)
     updateElement(newText)
     let waitTime = newText.length >= fullText.length ? 5000 : 50
-    setTimeout(() => { typewriter(fullText, newText)}, waitTime)
 }
 
 function updateElement(newText: string) {

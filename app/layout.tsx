@@ -57,12 +57,12 @@ return (
       <html lang="th" className={htmlClass}>
         <CssBaseline />
         <body className={inter.className}>
-          <div className='bg-white dark:bg-black'>
+          <div className='bg-background dark:bg-background-dark'>
             {children}
           </div>
         </body>
     </html>
-  </ThemeProvider>
-</StyledEngineProvider>
+   </ThemeProvider>
+ </StyledEngineProvider>
 );
 }

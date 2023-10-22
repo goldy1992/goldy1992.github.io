@@ -11,9 +11,9 @@ export default function NewAppBar() {
     const github_image = dm.enabled ? "./github-mark/github-mark-white.svg" : "./github-mark/github-mark.svg"
   
     return (
-        <HideOnScroll>
-        <AppBar elevation={0} className=' my-1'>
-          <div className="flex flex-row flex-nowrap items-center space-x-2.5 px-4 bg-white dark:bg-black">
+      <HideOnScroll>
+       <AppBar elevation={0} className='bg-background-light dark:bg-background-dark'>
+          <div className="flex flex-row flex-nowrap items-center space-x-2.5 px-4 bg-background-light dark:bg-background-dark">
             <Image
               src={github_image}
               alt="Github"
@@ -23,7 +23,7 @@ export default function NewAppBar() {
               priority
             />
     
-            <Typography variant="h6" color="inherit" className="dark:text-white text-black" noWrap>
+            <Typography variant="h6" color="inherit" className="dark:text-onBackground-dark text-onBackground-light" noWrap>
                   goldy1992
             </Typography> 
           
@@ -32,8 +32,8 @@ export default function NewAppBar() {
               <DarkModeButton />
             </div>
           </div>
-          </AppBar>
-        </HideOnScroll>
+        </AppBar>
+      </HideOnScroll>
 
     );
 }
