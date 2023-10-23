@@ -12,8 +12,8 @@ export default function NewAppBar() {
   
     return (
       <HideOnScroll>
-       <AppBar elevation={0} className='bg-background-light dark:bg-background-dark'>
-          <div className="flex flex-row flex-nowrap items-center space-x-2.5 px-4 bg-background-light dark:bg-background-dark">
+       <AppBar elevation={0} className="bg-neutral-100 dark:bg-neutral-900" >
+          <div className="flex flex-row flex-nowrap items-center space-x-2.5 px-4 pt-1">
             <Image
               src={github_image}
               alt="Github"
@@ -23,9 +23,9 @@ export default function NewAppBar() {
               priority
             />
     
-            <Typography variant="h6" color="inherit" className="dark:text-onBackground-dark text-onBackground-light" noWrap>
+            <div className="text-gray-800 dark:text-gray-200 font-medium text-lg">
                   goldy1992
-            </Typography> 
+            </div> 
           
             <div className='grow'/>
             <div>

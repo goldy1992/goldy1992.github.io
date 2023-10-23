@@ -57,7 +57,7 @@ return (
       <html lang="th" className={htmlClass}>
         <CssBaseline />
         <body className={inter.className}>
-          <div className='bg-background dark:bg-background-dark'>
+          <div className='bg-neutral-100 dark:bg-neutral-900'>
             {children}
           </div>
         </body>

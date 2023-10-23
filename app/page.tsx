@@ -1,25 +1,24 @@
 'use client'
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Grid from '@mui/material/Grid';
 
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme } from '@mui/material/styles';
 import { IsDarkModeContext } from './dark_mode_context';
 import TypewriterTitle from './typewriter';
 import { motion, useScroll } from "framer-motion"
 import NewAppBar from './new_app_bar';
-import WorkIcon from './icons/work_icon';
+import {WorkIcon} from './icons/work_icon';
+import DefaultCard from './cards/default_project_card';
 
 const typing_text = "I'm a full-stack developer."
+
+const imgUrl = "https://github.com/goldy1992/Mp3Player/blob/master/app/src/main/res/mipmap-hdpi/headphone_icon_foreground.png?raw=true"
+const title = "MP3 Player"
+const description = "An open source Android media player."
+const mp3_url = "https://github.com/goldy1992/Mp3Player"
 
 function Copyright() {
   return (
@@ -83,44 +82,10 @@ export function PageContent() {
           <button className='rounded uppercase p-2 border-0 bg-secondary-light dark:bg-secondary-dark text-color-onSecondary-light dark:text-color-onSecondary-dark'>Contact</button>
         </Stack>
         </Box>
-        <Container sx={{ py: 8 ,
-      //   bgcolor: 'background.paper'
-         }} maxWidth="md">  
-           
-          {/* End hero unit */}
-          <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-                  className='transition ease-in-out hover:scale-110'
-                >
-                  <CardMedia
-                    component="div"
-                    sx={{
-                      // 16:9
-                      pt: '56.25%',
-                    }}
-                    image="https://github.com/goldy1992/Mp3Player/blob/master/app/src/main/res/mipmap-hdpi/headphone_icon_foreground.png?raw=true"
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2" >
-                      MP3 Player
-                    </Typography>
-                    <Typography>
-                      An open source Android media player.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
- 
+        <div className="p-8 justify-center grid xs:grid-cols-12 md:grid-cols-4">
+          {/* <MaterialCard imgUrl={imgUrl} title={title} description={description} /> */}
+          <DefaultCard imgUrl={imgUrl} url={mp3_url} title={title} description={description} />
+        </div>
       {/* Footer */}
       <Box sx={{ //bgcolor: 'background.paper', 
       p: 6 }} component="footer">

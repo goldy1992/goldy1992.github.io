@@ -4,7 +4,9 @@ const config: Config = {
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-
+    // primary cyan
+    // secondary yellow
+    
     theme: {
       extend: {
         colors: {

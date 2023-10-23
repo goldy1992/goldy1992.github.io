@@ -12,14 +12,14 @@ export default function DarkModeButton() {
       <IconButton onClick={() => {dm.setIsDarkMode(false)
           console.log("setting dm false")
            }} > 
-          <LightModeIcon />
+          <LightModeIcon className="fill-yellow-500" />
         </IconButton>
     );
 
     
     const darkModeIcon =   ( 
       <IconButton onClick={() => {dm.setIsDarkMode(true) }} > 
-          <DarkModeIcon/>
+          <DarkModeIcon className="fill-yellow-500"/>
         </IconButton>
     );
     return (
