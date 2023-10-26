@@ -11,7 +11,7 @@ export default function NewAppBar() {
     const github_image = dm.enabled ? "./github-mark/github-mark-white.svg" : "./github-mark/github-mark.svg"
   
     return (
-      <HideOnScroll>
+      <HideOnScroll>  
        <AppBar elevation={0} className="bg-neutral-100 dark:bg-neutral-900" >
           <div className="flex flex-row flex-nowrap items-center space-x-2.5 px-4 pt-1">
             <Image
