@@ -1,8 +1,9 @@
 import IconButton from "@mui/material/IconButton/IconButton";
 import { IsDarkModeContext } from "./dark_mode_context"
 import React, { useContext } from "react";
-import LightModeIcon from '@mui/icons-material/LightMode';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
+import { DarkModeIcon, LightModeIcon } from "./icons/icons";
+// import LightModeIcon from '@mui/icons-material/LightMode';
+// import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 export default function DarkModeButton() {
   console.log("@invoking darkmode button")
@@ -12,14 +13,14 @@ export default function DarkModeButton() {
       <IconButton onClick={() => {dm.setIsDarkMode(false)
           console.log("setting dm false")
            }} > 
-          <LightModeIcon className="fill-yellow-500" />
+          <LightModeIcon className="stroke-sky-800 dark:stroke-sky-100 w-6 h-6 mr-2" />
         </IconButton>
     );
 
     
     const darkModeIcon =   ( 
       <IconButton onClick={() => {dm.setIsDarkMode(true) }} > 
-          <DarkModeIcon className="fill-yellow-500"/>
+          <DarkModeIcon className="stroke-sky-800 dark:stroke-sky-100 w-6 h-6 mr-2"/>
         </IconButton>
     );
     return (

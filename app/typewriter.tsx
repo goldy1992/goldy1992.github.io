@@ -61,29 +61,9 @@ export default function TypewriterTitle({
     return (
         <div className={className}>
             <div className='flex flex-row flex-wrap items-center'>
-                <Typography
-                component="p"
-                variant="subtitle1"
-                align="left"
-                color="text.primary"
-                className='flex-none font-mono'>{terminal_cursor}</Typography>          
-                <Typography
-                component="p"
-                variant="subtitle1"
-                align="left"
-                color="text.primary"
-                className='flex-none pl-2 font-mono'
-                >{currentText}</Typography>
-                
-
-                <Typography
-                component="p"
-                variant="subtitle1"
-                align="left"
-                color="text.primary"
-                className='flex-none blinker font-mono p-0'
-            >{textCursorVisible && text_cursor}</Typography>
-
+                <div className="flex-none font-mono text-gray-800 dark:text-gray-200">{terminal_cursor}</div>
+                <div className="flex-none pl-2 font-mono text-gray-800 dark:text-gray-200">{currentText}</div>
+                <div className="flex-none blinker p-0 font-mono text-gray-800 dark:text-gray-200">{textCursorVisible && text_cursor}</div>
             </div>
         </div>
     );

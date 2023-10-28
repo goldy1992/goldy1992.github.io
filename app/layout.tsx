@@ -1,11 +1,10 @@
 'use client'
-import createTheme from '@mui/material/styles/createTheme'
 import './globals.css'
 import { useContext } from 'react';
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { DarkModeProvider, IsDarkModeContext } from './dark_mode_context'
-import { CssBaseline, PaletteMode, StyledEngineProvider, ThemeProvider } from '@mui/material';
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -43,26 +42,21 @@ export function RootChild({
   const darkModeContext = useContext(IsDarkModeContext)
   var darkMode = darkModeContext.enabled
   console.log("calling root: is  dm " + darkMode )
-  var modeType : PaletteMode = darkMode ? 'dark': 'light'
-  var darkTheme = createTheme({
-    palette: {
-      mode: modeType,
-    },
-  });
+  var modeType : string = darkMode ? 'dark': 'light'
   const htmlClass = darkMode ? "dark" : ""
   
+  const bodyClassName = 'bg-neutral-100 dark:bg-neutral-900 ' + inter.className
 return (
-  <StyledEngineProvider injectFirst>
-    <ThemeProvider theme={darkTheme} >
+
+
       <html lang="th" className={htmlClass}>
-        <CssBaseline />
-        <body className={inter.className}>
+
+        <body className={bodyClassName}>
           <div className='bg-neutral-100 dark:bg-neutral-900'>
             {children}
           </div>
         </body>
     </html>
-   </ThemeProvider>
- </StyledEngineProvider>
+
 );
 }

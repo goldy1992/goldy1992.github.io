@@ -8,17 +8,42 @@ import Link from '@mui/material/Link';
 import { IsDarkModeContext } from './dark_mode_context';
 import TypewriterTitle from './typewriter';
 import { motion, useScroll } from "framer-motion"
-import NewAppBar from './new_app_bar';
-import {WorkIcon} from './icons/work_icon';
+import {CodeProjectsIcon, ContactIcon, InfoIcon, WorkIcon} from './icons/icons';
 import DefaultCard from './cards/default_project_card';
 import StyledButton from './styled_button';
+import TailwindAppBar from './tailwind_app_bar';
 
 const typing_text = "I'm a full-stack developer."
 
-const imgUrl = "https://github.com/goldy1992/Mp3Player/blob/master/app/src/main/res/mipmap-hdpi/headphone_icon_foreground.png?raw=true"
-const title = "MP3 Player"
-const description = "An open source Android media player."
-const mp3_url = "https://github.com/goldy1992/Mp3Player"
+const projects = [
+  {
+    "title": "MP3 Player",
+    "url":"https://github.com/goldy1992/Mp3Player",    
+    "image": "https://github.com/goldy1992/Mp3Player/blob/master/app/src/main/res/mipmap-hdpi/headphone_icon_foreground.png?raw=true",
+    "description": "An open source Android media player.",
+    "time": "2017 - Present"
+  },
+  {
+    "title": "Restaurant Management System",
+    "url": "https://github.com/goldy1992/restaurant_management_system",
+    "description": "A dockerised restaurant management written using Java Swing and Spring Integration",  
+    "time": "2015"
+  },
+  {
+    "title": "2D Pong",
+    "url": "https://github.com/goldy1992/Pong",
+    "description": "A basic Java implementation of 2D Pong in Java using MVC design principles.",
+    "time": "2014"
+  }
+]
+const cards = projects.map(project =>{
+  if ("image" in project)
+   return ( <DefaultCard imgUrl={project["image"]} time={project["time"]} url={project["url"]} title={project["title"]} description={project["description"]} />) 
+  else 
+  return ( <DefaultCard url={project["url"]} title={project["title"]} time={project["time"]} description={project["description"]} />)
+}
+)
+
 
 function Copyright() {
   return (
@@ -47,17 +72,17 @@ export function PageContent() {
       <main> 
         <div className='flex flex-col'>   
           <motion.div style={{ scaleX: scrollYProgress }} className='origin-bottom-left fixed place-self-start bottom-0 left-0 right-0 h-1 bg-black dark:bg-white' />
-          <NewAppBar /> 
+          <TailwindAppBar /> 
 
         {/* Hero unit */}
-        <Box
+        {/* <Box
           sx={{
              //bgcolor: 'red',
             pt: 8,
             pb: 6,
           }}
-        >
-        {/* <div className='pt-8 pb-6 bg-cyan-500'> */}
+        > */}
+        <div className='pt-8 pb-6'>
           <div className="p-2 max-w-sm mx-auto bg-secondaryContainer-light dark:bg-secondaryContainer-dark rounded-xl shadow-lg flex items-center space-x-2">
             <TypewriterTitle text={typing_text} infinite={true} className="flex-none" /> 
           </div>
@@ -65,21 +90,23 @@ export function PageContent() {
 
           <div className="flex justify-center pt-4 space-x-2">
             <StyledButton name='Projects'>
-              <WorkIcon className="fill-current w-4 h-4 mr-2" />
+              <CodeProjectsIcon className="fill-transparent dark:stroke-sky-100 stoke-sky-900 w-4 h-4 mr-2" />
             </StyledButton>
 
             <StyledButton name='About' >
-              <WorkIcon className="fill-current w-4 h-4 mr-2" />
+              <InfoIcon className="fill-transparent dark:stroke-sky-100 stoke-sky-900 w-4 h-4 mr-2" />
             </StyledButton>
 
-            <StyledButton name='Contact' />
+            <StyledButton name='Contact'>
+              <ContactIcon className="fill-transparent dark:stroke-sky-100 stoke-sky-900 w-4 h-4 mr-2" />  
+            </StyledButton>
           </div>
-        {/* </div> */}
-        </Box>
-        <div className="p-8 justify-center grid xs:grid-cols-12 md:grid-cols-4">
-          {/* <MaterialCard imgUrl={imgUrl} title={title} description={description} /> */}
-          <DefaultCard imgUrl={imgUrl} url={mp3_url} title={title} description={description} />
         </div>
+
+        <div className="p-8 justify-center self-center rounded grid grid-cols-2 sm:grid-cols-2 gap-4 md:grid-cols-4 dark:bg-neutral-800 bg-neutral-200">
+           {cards}
+        </div>
+        
       {/* Footer */}
       <Box sx={{ //bgcolor: 'background.paper', 
       p: 6 }} component="footer">
