@@ -4,7 +4,7 @@ import * as React from 'react';
 import TypewriterTitle from './typewriter';
 import { motion, useScroll } from "framer-motion"
 import {CodeProjectsIcon, ContactIcon, InfoIcon, SpringLogo} from './icons/icons';
-import DefaultCard from './cards/default_project_card';
+import DefaultCard, { FlowBiteCard } from './cards/default_project_card';
 import StyledButton from './styled_button';
 import TailwindAppBar from './tailwind_app_bar';
 import { Project, ProjectBuilder } from './project';
@@ -99,7 +99,7 @@ export function PageContent() {
         </div>
 
         {/* Project Cards */}
-        <div className="p-8 justify-center self-center rounded grid grid-cols-2 sm:grid-cols-2 gap-4 md:grid-cols-4 dark:bg-neutral-800 bg-neutral-200">
+        <div className="p-8 justify-center self-center rounded grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-4 dark:bg-neutral-800 bg-neutral-200">
            {cards}
         </div>
         
