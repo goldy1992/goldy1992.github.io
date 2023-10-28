@@ -1,4 +1,3 @@
-import Typography from "@mui/material/Typography/Typography";
 import { useEffect, useState } from "react";
 
 const text_retype_delay = 5000

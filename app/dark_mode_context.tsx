@@ -7,7 +7,6 @@ export const IsDarkModeContext = createContext({
 
 export function DarkModeProvider(props:any) {
     const [darkMode, setDarkMode] = useState(true);
-    console.log("setting provider darkmode to: " + darkMode);
     return <IsDarkModeContext.Provider 
     value={{ enabled: darkMode, setIsDarkMode: setDarkMode }}>
         {props.children}

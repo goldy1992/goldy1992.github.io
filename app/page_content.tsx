@@ -47,7 +47,7 @@ function Copyright() {
       <div className='flex-none text-gray-800 dark:text-gray-200 font-small'>
   
         {'Copyright © '}
-        <a color="inherit" href="https://mui.com/">
+        <a color="inherit" href="https://github.com/goldy1992">
           goldy1992
         </a>{' '}
         {new Date().getFullYear()}
