@@ -1,47 +1,46 @@
 'use client'
 import * as React from 'react';
 
-import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import { IsDarkModeContext } from './dark_mode_context';
 import TypewriterTitle from './typewriter';
 import { motion, useScroll } from "framer-motion"
-import {CodeProjectsIcon, ContactIcon, InfoIcon, WorkIcon} from './icons/icons';
+import {CodeProjectsIcon, ContactIcon, InfoIcon} from './icons/icons';
 import DefaultCard from './cards/default_project_card';
 import StyledButton from './styled_button';
 import TailwindAppBar from './tailwind_app_bar';
+import { Project, ProjectBuilder } from './project';
 
 const typing_text = "I'm a full-stack developer."
 
-const projects = [
-  {
-    "title": "MP3 Player",
-    "url":"https://github.com/goldy1992/Mp3Player",    
-    "image": "https://github.com/goldy1992/Mp3Player/blob/master/app/src/main/res/mipmap-hdpi/headphone_icon_foreground.png?raw=true",
-    "description": "An open source Android media player.",
-    "time": "2017 - Present"
-  },
-  {
-    "title": "Restaurant Management System",
-    "url": "https://github.com/goldy1992/restaurant_management_system",
-    "description": "A dockerised restaurant management written using Java Swing and Spring Integration",  
-    "time": "2015"
-  },
-  {
-    "title": "2D Pong",
-    "url": "https://github.com/goldy1992/Pong",
-    "description": "A basic Java implementation of 2D Pong in Java using MVC design principles.",
-    "time": "2014"
-  }
+const projects : Array<Project> = [
+  new ProjectBuilder()
+    .id(0)
+    .title("MP3 Player")
+    .url("https://github.com/goldy1992/Mp3Player")
+    .imgUrl("https://github.com/goldy1992/Mp3Player/blob/master/app/src/main/res/mipmap-hdpi/headphone_icon_foreground.png?raw=true")
+    .description("An open source Android media player.")
+    .time("2017 - Present")
+    .build(),
+  
+    new ProjectBuilder()
+    .id(1)
+    .title("Restaurant Management System")
+    .url("https://github.com/goldy1992/restaurant_management_system")
+    .description("A dockerised restaurant management written using Java Swing and Spring Integration")  
+    .time("2015")
+    .build(),
+  new ProjectBuilder()
+    .id(2)
+    .title("2D Pong")
+    .url("https://github.com/goldy1992/Pong")
+    .description("A basic Java implementation of 2D Pong in Java using MVC design principles.")
+    .time("2014")
+    .build()  
 ]
-const cards = projects.map(project =>{
-  if ("image" in project)
-   return ( <DefaultCard imgUrl={project["image"]} time={project["time"]} url={project["url"]} title={project["title"]} description={project["description"]} />) 
-  else 
-  return ( <DefaultCard url={project["url"]} title={project["title"]} time={project["time"]} description={project["description"]} />)
-}
+const cards = projects.map(
+  project => ( <DefaultCard project={project} />) 
 )
 
 
