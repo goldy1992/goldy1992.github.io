@@ -1,9 +1,6 @@
 'use client'
 import * as React from 'react';
 
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
 import TypewriterTitle from './typewriter';
 import { motion, useScroll } from "framer-motion"
 import {CodeProjectsIcon, ContactIcon, InfoIcon} from './icons/icons';
@@ -40,20 +37,24 @@ const projects : Array<Project> = [
     .build()  
 ]
 const cards = projects.map(
-  project => ( <DefaultCard project={project} />) 
+  project => ( <DefaultCard key={project.id} project={project} />) 
 )
 
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="text.secondary" align="center">
+    <div className='flex-none flex flex-row items-center'>
+    
+    <div className='flex-none text-gray-800 dark:text-gray-200 font-small'>
+
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
+      <a color="inherit" href="https://mui.com/">
+        goldy1992
+      </a>{' '}
       {new Date().getFullYear()}
       {'.'}
-    </Typography>
+      </div>
+       </div>
   );
 }
 
@@ -74,19 +75,12 @@ export function PageContent() {
           <TailwindAppBar /> 
 
         {/* Hero unit */}
-        {/* <Box
-          sx={{
-             //bgcolor: 'red',
-            pt: 8,
-            pb: 6,
-          }}
-        > */}
         <div className='pt-8 pb-6'>
           <div className="p-2 max-w-sm mx-auto bg-secondaryContainer-light dark:bg-secondaryContainer-dark rounded-xl shadow-lg flex items-center space-x-2">
             <TypewriterTitle text={typing_text} infinite={true} className="flex-none" /> 
           </div>
 
-
+          {/* Buttons */}
           <div className="flex justify-center pt-4 space-x-2">
             <StyledButton name='Projects'>
               <CodeProjectsIcon className="fill-transparent dark:stroke-sky-100 stoke-sky-900 w-4 h-4 mr-2" />
@@ -102,26 +96,18 @@ export function PageContent() {
           </div>
         </div>
 
+        {/* Project Cards */}
         <div className="p-8 justify-center self-center rounded grid grid-cols-2 sm:grid-cols-2 gap-4 md:grid-cols-4 dark:bg-neutral-800 bg-neutral-200">
            {cards}
         </div>
         
       {/* Footer */}
-      <Box sx={{ //bgcolor: 'background.paper', 
-      p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
+      <div className='flex-none flex flex-col items-center pt-4 pb-2'>
+        <div className='flex-none flex flex-row items-center'>
+          <div className='flex-none text-gray-800 dark:text-gray-200 font-medium text-lg'>Footer</div>
+        </div>
         <Copyright />
-      </Box>
+        </div>
       {/* End footer */}
       </div>
     </main>

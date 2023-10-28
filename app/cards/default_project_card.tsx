@@ -1,10 +1,8 @@
 import { Project } from "@/project";
-import Link from "next/link";
 
 export default function DefaultCard({project}: {project: Project}) {
     return ( 
-
-        <div key={project.id} className="flex flex-none flex-col dark:bg-neutral-700 bg-neutral-300 rounded-xl p-2 hover:scale-110 justify-start hover:cursor-pointer" onClick={ () => window.open(url)} >
+        <div className="flex flex-none flex-col dark:bg-neutral-700 bg-neutral-300 rounded-xl p-2 hover:scale-110 justify-start hover:cursor-pointer" onClick={ () => window.open(url)} >
             
             { project.imgUrl != null && (
                 <img src={project.imgUrl} className="flex-none rounded w-52 h-52 self-center"/>
