@@ -2,8 +2,6 @@ import IconButton from "@mui/material/IconButton/IconButton";
 import { IsDarkModeContext } from "./dark_mode_context"
 import React, { useContext } from "react";
 import { DarkModeIcon, LightModeIcon } from "./icons/icons";
-// import LightModeIcon from '@mui/icons-material/LightMode';
-// import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 export default function DarkModeButton() {
   console.log("@invoking darkmode button")
