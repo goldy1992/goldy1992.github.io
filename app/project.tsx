@@ -1,10 +1,9 @@
-import internal from "stream";
-
 export class Project {
     id: number;
     title: string;
     url: string;
     imgUrl?: string;
+    imgLogo?: React.ReactElement;
     description: string;
     time: string;
 
@@ -15,16 +14,16 @@ export class Project {
         description: string,
         time: string,
         imgUrl?: string,
+        imgLogo?: React.ReactElement
         ) {
         this.id = id;
         this.url = url;
         this.title = title;
         this.imgUrl = imgUrl;
+        this.imgLogo = imgLogo;
         this.description = description;
         this.time = time;
     }
-
-
 }
 
 export class ProjectBuilder {
@@ -32,6 +31,7 @@ export class ProjectBuilder {
     _url: string = "";
     _title: string = "";
     _imgUrl?: string;
+    _imgLogo?: React.ReactElement;
     _description: string = "";
     _time: string = "";
 
@@ -55,6 +55,10 @@ export class ProjectBuilder {
         this._imgUrl = imgUrl;
         return this;
     }
+    imgLogo(imgLogo: React.ReactElement) : ProjectBuilder {
+        this._imgLogo = imgLogo;
+        return this;
+    }
     description(description: string) : ProjectBuilder {
         this._description = description;
         return this;
@@ -71,7 +75,8 @@ export class ProjectBuilder {
             this._title,
             this._description,
             this._time,
-            this._imgUrl
+            this._imgUrl,
+            this._imgLogo
         )
     }
 }

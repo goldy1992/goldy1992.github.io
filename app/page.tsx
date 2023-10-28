@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import TypewriterTitle from './typewriter';
 import { motion, useScroll } from "framer-motion"
-import {CodeProjectsIcon, ContactIcon, InfoIcon} from './icons/icons';
+import {CodeProjectsIcon, ContactIcon, InfoIcon, SpringLogo} from './icons/icons';
 import DefaultCard from './cards/default_project_card';
 import StyledButton from './styled_button';
 import TailwindAppBar from './tailwind_app_bar';
@@ -24,6 +24,7 @@ const projects : Array<Project> = [
     new ProjectBuilder()
     .id(1)
     .title("Restaurant Management System")
+    .imgUrl("./java-logo-no-text.png")
     .url("https://github.com/goldy1992/restaurant_management_system")
     .description("A dockerised restaurant management written using Java Swing and Spring Integration")  
     .time("2015")
@@ -31,6 +32,7 @@ const projects : Array<Project> = [
   new ProjectBuilder()
     .id(2)
     .title("2D Pong")
+    .imgUrl("./java-logo-no-text.png")
     .url("https://github.com/goldy1992/Pong")
     .description("A basic Java implementation of 2D Pong in Java using MVC design principles.")
     .time("2014")
