@@ -146,7 +146,7 @@ const config: Config = {
   plugins: [],
   darkMode: 'class',
   corePlugins: {
-    preflight: false,
+   // preflight: false,
   },
 }
 export default config
