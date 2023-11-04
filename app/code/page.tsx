@@ -11,17 +11,17 @@ export default function CodeBlock() {
 
                     <div className="border-b border-slate-500/30 col-start-2 col-span-10 row-start-1 rounded row-span-2" >
                         <div className="flex flex-col gap-2">
-                        <div className="flex-none flex gap-1 p-2 flex-row">
-                            <div className="flex-none w-2.5 h-2.5 bg-slate-600 rounded-full"></div>
-                            <div className="flex-none w-2.5 h-2.5 bg-slate-600 rounded-full"></div>
-                            <div className="flex-none w-2.5 h-2.5 bg-slate-600 rounded-full"></div>
+                        <div className="flex-none flex gap-1 p-2 bg-slate-500 rounded-t-lg flex-row">
+                            <div className="flex-none w-2.5 h-2.5 bg-red-600 rounded-full"></div>
+                            <div className="flex-none w-2.5 h-2.5 bg-yellow-600 rounded-full"></div>
+                            <div className="flex-none w-2.5 h-2.5 bg-green-600 rounded-full"></div>
                         </div>
                 
                     </div>
                     <div className="bg-slate-800 w-full relative flex-auto">
                         <pre className="flex flex-no-wrap min-h-full text-sm leading-6">
                         <div aria-hidden="true" className="text-slate-600 py-4 pr-4 text-right select-none w-[50px]" >
-                        1<br/>
+                        1{"\n"}
 2<br/>
 3<br/>
 4<br/>
