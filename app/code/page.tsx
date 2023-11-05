@@ -7,7 +7,7 @@ export default function CodeBlock() {
             <div className="flex flex-col">
                 <TailwindAppBar />
 
-                <div className="grid grid-cols-12 grid-rows-5 mt-4">
+                <div className="mt-10 pt-8 grid grid-cols-12 grid-rows-5 mt-4">
 
                     <div className="border-b border-slate-500/30 col-start-2 col-span-10 row-start-1 rounded row-span-2" >
                         <div className="flex flex-col gap-2">

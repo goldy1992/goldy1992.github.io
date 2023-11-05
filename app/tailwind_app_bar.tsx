@@ -1,14 +1,14 @@
 import Image from 'next/image'
-import { useContext, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import DarkModeButton from './dark_mode_button';
 import { IsDarkModeContext } from './dark_mode_context';
-import { motion, useMotionValueEvent, useScroll} from "framer-motion"
-
+import {  motion, useMotionValueEvent, useScroll} from "framer-motion"
+const duration = 0.3
 export default function TailwindAppBar() {
 
   const dm = useContext(IsDarkModeContext);
   const github_image = dm.enabled ? "./github-mark/github-mark-white.svg" : "./github-mark/github-mark.svg"
-
+ 
   /** add this bit **/
   const { scrollY, } = useScroll();
 
@@ -33,22 +33,22 @@ export default function TailwindAppBar() {
 
  /** add this const **/
  const variants = {
-  /** this is the "visible" key and it's respective style object **/
-  visible: { y: 0 },
-  /** this is the "hidden" key and it's respective style object **/
-  hidden: { y: -100 }
+    /** this is the "visible" key and it's respective style object **/
+    visible: { top: '0px' },
+    /** this is the "hidden" key and it's respective style object **/
+    hidden: { top: '-100px' }
   };
 
   return (
-    <div className='fixed w-full'>
-      <motion.nav
+      <motion.nav className='fixed w-full'
         /** the variants object needs to be passed into the motion component **/
-        variants={variants}
+         variants={variants}
         /** it's right here that we match our boolean state with these variant keys **/
-        animate={hidden ? "hidden" : "visible"}
+         animate={hidden ? "hidden" : "visible"}
     
         /** I'm also going to add a custom easing curve and duration for the animation **/
-        transition={{ ease: 'linear', duration: 0.3 }}>
+        transition={{ ease: 'linear', duration: duration
+      }}>
 
       <div className="pt-2 pb-2 bg-neutral-100 dark:bg-neutral-900 flex flex-row flex-nowrap items-center space-x-2.5 px-4 pt-1">
     
@@ -71,7 +71,7 @@ export default function TailwindAppBar() {
       </div>
     
       </motion.nav>
-    </div>
+
   );
 }
 
