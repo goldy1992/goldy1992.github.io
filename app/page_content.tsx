@@ -33,12 +33,120 @@ const projects : Array<Project> = [
     .url("https://github.com/goldy1992/Pong")
     .description("A basic Java implementation of 2D Pong in Java using MVC design principles.")
     .time("2014")
-    .build()  
+    .build(),  
+  new ProjectBuilder()
+    .id(2)
+    .title("2D Pong")
+    .imgUrl("./java-logo-no-text.png")
+    .url("https://github.com/goldy1992/Pong")
+    .description("A basic Java implementation of 2D Pong in Java using MVC design principles.")
+    .time("2014")
+    .build(),  
+    new ProjectBuilder()
+      .id(2)
+      .title("2D Pong")
+      .imgUrl("./java-logo-no-text.png")
+      .url("https://github.com/goldy1992/Pong")
+      .description("A basic Java implementation of 2D Pong in Java using MVC design principles.")
+      .time("2014")
+      .build(),  
+      new ProjectBuilder()
+        .id(2)
+        .title("2D Pong")
+        .imgUrl("./java-logo-no-text.png")
+        .url("https://github.com/goldy1992/Pong")
+        .description("A basic Java implementation of 2D Pong in Java using MVC design principles.")
+        .time("2014")
+        .build(),  
+        new ProjectBuilder()
+          .id(2)
+          .title("2D Pong")
+          .imgUrl("./java-logo-no-text.png")
+          .url("https://github.com/goldy1992/Pong")
+          .description("A basic Java implementation of 2D Pong in Java using MVC design principles.")
+          .time("2014")
+          .build(),  
+          new ProjectBuilder()
+            .id(2)
+            .title("2D Pong")
+            .imgUrl("./java-logo-no-text.png")
+            .url("https://github.com/goldy1992/Pong")
+            .description("A basic Java implementation of 2D Pong in Java using MVC design principles.")
+            .time("2014")
+            .build(),  
+            new ProjectBuilder()
+              .id(2)
+              .title("2D Pong")
+              .imgUrl("./java-logo-no-text.png")
+              .url("https://github.com/goldy1992/Pong")
+              .description("A basic Java implementation of 2D Pong in Java using MVC design principles.")
+              .time("2014")
+              .build(),  
+              new ProjectBuilder()
+                .id(2)
+                .title("2D Pong")
+                .imgUrl("./java-logo-no-text.png")
+                .url("https://github.com/goldy1992/Pong")
+                .description("A basic Java implementation of 2D Pong in Java using MVC design principles.")
+                .time("2014")
+                .build(),  
+                new ProjectBuilder()
+                  .id(2)
+                  .title("2D Pong")
+                  .imgUrl("./java-logo-no-text.png")
+                  .url("https://github.com/goldy1992/Pong")
+                  .description("A basic Java implementation of 2D Pong in Java using MVC design principles.")
+                  .time("2014")
+                  .build(),  
+                  new ProjectBuilder()
+                    .id(2)
+                    .title("2D Pong")
+                    .imgUrl("./java-logo-no-text.png")
+                    .url("https://github.com/goldy1992/Pong")
+                    .description("A basic Java implementation of 2D Pong in Java using MVC design principles.")
+                    .time("2014")
+                    .build(),  
+                    new ProjectBuilder()
+                      .id(2)
+                      .title("2D Pong")
+                      .imgUrl("./java-logo-no-text.png")
+                      .url("https://github.com/goldy1992/Pong")
+                      .description("A basic Java implementation of 2D Pong in Java using MVC design principles.")
+                      .time("2014")
+                      .build(),  
+                      new ProjectBuilder()
+                        .id(2)
+                        .title("2D Pong")
+                        .imgUrl("./java-logo-no-text.png")
+                        .url("https://github.com/goldy1992/Pong")
+                        .description("A basic Java implementation of 2D Pong in Java using MVC design principles.")
+                        .time("2014")
+                        .build(),  
+                        new ProjectBuilder()
+                          .id(2)
+                          .title("2D Pong")
+                          .imgUrl("./java-logo-no-text.png")
+                          .url("https://github.com/goldy1992/Pong")
+                          .description("A basic Java implementation of 2D Pong in Java using MVC design principles.")
+                          .time("2014")
+                          .build(),  
+                          new ProjectBuilder()
+                            .id(2)
+                            .title("2D Pong")
+                            .imgUrl("./java-logo-no-text.png")
+                            .url("https://github.com/goldy1992/Pong")
+                            .description("A basic Java implementation of 2D Pong in Java using MVC design principles.")
+                            .time("2014")
+                            .build(),
 ]
 const cards = projects.map(
   project => ( <DefaultCard key={project.id} project={project} />) 
 )
 
+const n = Array(95)
+const lineBreaks = n.map(
+  i => ( <div>Hello<br/></div> )
+)
 
 function Copyright() {
     return (
@@ -93,7 +201,10 @@ export default function PageContent() : JSX.Element {
           <div className="p-8 justify-center self-center rounded grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-4 dark:bg-neutral-800 bg-neutral-200">
              {cards}
           </div>
-          
+
+<div>
+          {lineBreaks}
+          </div>     
         {/* Footer */}
         <div className='flex-none flex flex-col items-center pt-4 pb-2'>
           <div className='flex-none flex flex-row items-center'>
