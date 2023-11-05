@@ -103,9 +103,6 @@ export default function PageContent() : JSX.Element {
           </div>     
         {/* Footer */}
         <div className='flex-none flex flex-col items-center pt-4 pb-2'>
-          <div className='flex-none flex flex-row items-center'>
-            <div className='flex-none text-gray-800 dark:text-gray-200 font-medium text-lg'>Footer</div>
-          </div>
           <Copyright />
           </div>
         {/* End footer */}
