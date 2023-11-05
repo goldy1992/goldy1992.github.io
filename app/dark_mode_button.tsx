@@ -25,31 +25,3 @@ export default function DarkModeButton() {
     </IsDarkModeContext.Provider>
     );
 }
-
-// export default function NextDarkModeButton() {
-//   const { systemTheme, theme, setTheme } = useTheme();
-//   const currentTheme = theme === 'system' ? systemTheme : theme;
-//     const lightModeIcon =   ( 
-//       <IconButton onClick={() => {dm.setIsDarkMode(false)
-//       console.log("setting dm false") }} > 
-//           <LightModeIcon/>
-//         </IconButton>
-//     );
-
-    
-//     const darkModeIcon =   ( 
-//       <IconButton onClick={() => {dm.setIsDarkMode(true) }} > 
-//           <DarkModeIcon/>
-//         </IconButton>
-//     );
-//     return (
-//       <IsDarkModeContext.Provider value={{enabled: dm.enabled, setIsDarkMode: dm.setIsDarkMode}}>
-//       { dm.enabled ? lightModeIcon : darkModeIcon      }
-
-//     </IsDarkModeContext.Provider>
-//     );
-// }
-
-
-
-

@@ -39,11 +39,6 @@ const cards = projects.map(
   project => ( <DefaultCard key={project.id} project={project} />) 
 )
 
-const n = Array(95)
-const lineBreaks = n.map(
-  i => ( <div>Hello<br/></div> )
-)
-
 function Copyright() {
     return (
       <div className='flex-none flex flex-row items-center'>
@@ -98,9 +93,6 @@ export default function PageContent() : JSX.Element {
              {cards}
           </div>
 
-<div>
-          {lineBreaks}
-          </div>     
         {/* Footer */}
         <div className='flex-none flex flex-col items-center pt-4 pb-2'>
           <Copyright />
