@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+'use client'
+import { Dispatch, useEffect, useState } from "react";
 
 const text_retype_delay = 5000
 const terminal_cursor = ">  "
@@ -59,11 +60,9 @@ export default function TypewriterTitle({
       
     return (
         <div className={className}>
-            <div className='flex flex-row flex-wrap items-center'>
-                <div className="flex-none font-mono text-gray-800 dark:text-gray-200">{terminal_cursor}</div>
-                <div className="flex-none pl-2 font-mono text-gray-800 dark:text-gray-200">{currentText}</div>
-                <div className="flex-none blinker p-0 font-mono text-gray-800 dark:text-gray-200">{textCursorVisible && text_cursor}</div>
-            </div>
+            <span>{currentText}</span>
+            <span>{textCursorVisible && text_cursor}</span>
         </div>
+
     );
 }

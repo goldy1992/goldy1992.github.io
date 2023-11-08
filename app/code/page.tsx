@@ -1,5 +1,5 @@
 'use client'
-import TailwindAppBar from "@/tailwind_app_bar";
+import TailwindAppBar from "@/components/tailwind_app_bar";
 
 export default function CodeBlock() {
     return (
