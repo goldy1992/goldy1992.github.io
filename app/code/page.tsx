@@ -1,7 +1,24 @@
 'use client'
 import TailwindAppBar from "@/components/tailwind_app_bar";
+import MultiTypeWriter from "@/components/typewriter/multi_typewriter";
 
 export default function CodeBlock() {
+    const code_blocks = [
+        "@Composable", 
+        "private fun", 
+        "HelloWorld", 
+        "{", 
+        "   modifier: Modifier", 
+        ") {", 
+        "   Text", 
+        "(",  
+        "      text = ", 
+        "\"Hello world\"", 
+        "    )", 
+        "} "
+    ]
+    const typed_code_blocks = MultiTypeWriter(code_blocks)
+
     return (
         <main>
             <div className="flex flex-col">
@@ -32,13 +49,13 @@ export default function CodeBlock() {
 9<br/>
 </div>
 <code className="flex-grow relative block break-normal text-slate-50 pt-4 pb-4 px-4 overflow-auto">
-    <span className="text-yellow-300">@Composable</span><br/>
-    <span className="text-orange-400">private fun</span> <span className="text-yellow-600">HelloWorld</span>{"("}<br/>
-        {"   "}modifier: Modifier<br/>{") {"}<br/>
-        {"   "} <span className="text-green-300">Text</span>{"("}<br/>
-        {"      "} <span className="text-blue-400">text = </span><span className="text-green-500">{ "\"Hello world\""}</span><br/>
-        {"    )"}<br/>
-        {"}"}<br />
+    <span className="text-yellow-300">{typed_code_blocks[0]}</span><br/>
+    <span className="text-orange-400">{typed_code_blocks[1]}</span> <span className="text-yellow-600">{typed_code_blocks[2]}</span>{typed_code_blocks[3]}<br/>
+    {typed_code_blocks[4]}<br/>{typed_code_blocks[5]}<br/>
+         <span className="text-green-300">{typed_code_blocks[6]}</span>{typed_code_blocks[7]}<br/>
+        <span className="text-blue-400">{typed_code_blocks[8]}</span><span className="text-green-500">{typed_code_blocks[9]}</span><br/>
+        {typed_code_blocks[10]}<br/>
+        {typed_code_blocks[11]}<br />
 
 </code>
 

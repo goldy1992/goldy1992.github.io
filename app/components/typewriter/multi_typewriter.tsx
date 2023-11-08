@@ -20,7 +20,7 @@ export default function MultiTypeWriter(
     let lastIdx = getStringArrayLength(strings)
     
     useEffect(()=> {
-           let timeout : NodeJS.Timeout;
+        let timeout : NodeJS.Timeout;
         if (currentIndex < lastIdx) {          
             setIsTyping(true);
             timeout = setTimeout(() => {
@@ -93,8 +93,9 @@ function createTypedStringArray(currentIdx: number, strings : Array<string>) : A
         let currentStr = strings[strIdx]
         let newCount = count + currentStr.length
         if (newCount >= currentIdx) {
-            let charsToPush = newCount - currentIdx;
+            let charsToPush = currentIdx - count + 1;
             toReturn[strIdx] = currentStr.substring(0, charsToPush)
+            
             complete = true;
         } else {
             count = newCount

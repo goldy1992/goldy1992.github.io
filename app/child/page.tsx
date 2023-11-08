@@ -22,10 +22,10 @@ export function Child({children} : {children: React.ReactNode}) {
     return (
         <div className="flex flex-col w-full items=center">
             <div className="bg-red-400">
-                {typedStrings != null && typedStrings[0]}
+                {typedStrings[0]}
             </div>
             <div className="bg-red-400">
-            {typedStrings != null && typedStrings[1]}
+            {typedStrings[1]}
             </div>
         </div>
     )
