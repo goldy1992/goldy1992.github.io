@@ -2,7 +2,6 @@ import Image from 'next/image'
 import { useContext, useEffect, useState } from 'react';
 import DarkModeButton from '../dark_mode_button';
 import { IsDarkModeContext } from '../dark_mode_context';
-import {  motion, useMotionValueEvent, useScroll} from "framer-motion"
 const duration = 0.3
 export default function TailwindAppBar() {
 

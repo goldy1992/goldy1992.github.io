@@ -5,6 +5,8 @@ import { Project, ProjectBuilder } from "./project";
 import StyledButton from "./components/styled_button";
 import TailwindAppBar from "./components/tailwind_app_bar";
 import TextWriter from "./text_writer";
+import FloatingHomeButton from "./components/floating_action_button";
+import { scrollToFn } from "./utils";
 
 
 const projects : Array<Project> = [
@@ -57,47 +59,84 @@ function Copyright() {
 
   
 export default function PageContent() : JSX.Element {
-    const { scrollYProgress } = useScroll();
+  const { scrollYProgress } = useScroll();
 
-    return (
-        <main> 
-          <div className='flex flex-col'>   
-            <motion.div style={{ scaleX: scrollYProgress }} className='origin-bottom-left fixed place-self-start bottom-0 left-0 right-0 h-1 bg-black dark:bg-white' />
-            <TailwindAppBar /> 
+  return (
+    <main> 
+      <div id="home" />
+      <div className='flex flex-col'>   
+        <motion.div style={{ scaleX: scrollYProgress }} className='origin-bottom-left fixed place-self-start bottom-0 left-0 right-0 h-1 bg-black dark:bg-white' />
+        <TailwindAppBar />
+        <FloatingHomeButton onClick={() =>
+          scrollToFn("home")
+        }
+         /> 
+        {/* Hero unit */}
+        <TextWriter />
+      </div>
   
-          {/* Hero unit */}
-          <TextWriter />
+      {/* Buttons */}
+      <div className="flex justify-center pt-4 space-x-2">
+        <StyledButton name='Projects' scrollTo="projects">
+          <CodeProjectsIcon className="fill-transparent dark:stroke-sky-100 stoke-sky-900 w-4 h-4 mr-2" />
+        </StyledButton>
+
+        <StyledButton name='About' scrollTo="about">
+          <InfoIcon className="fill-transparent dark:stroke-sky-100 stoke-sky-900 w-4 h-4 mr-2" />
+        </StyledButton>
+
+        <StyledButton name='Contact' scrollTo="contact">
+          <ContactIcon className="fill-transparent dark:stroke-sky-100 stoke-sky-900 w-4 h-4 mr-2" />  
+        </StyledButton>
+      </div>
+    <div id="about" />
+    <div className="flex flex-col dark:bg-neutral-800 px-4 py-3 bg-neutral-200 items-center pt-4 mt-8">
+      <div>
+        <h2 className="font-bold text-xl py-2 text-gray-800 dark:text-gray-200">About Me</h2>
+      </div>
+      <div className="rounded py-1 px-7 dark:bg-neutral-700 bg-neutral-300">
+        <ul className="list-disc text-medium py-4 text-gray-800 dark:text-gray-200">
+          <li>7+ years as a full-stack developer working with enterprise applications.</li>
+          <li>Experience developing AWS Cloud Solutions along with writing Infrastructure as Code.</li>
+          <li>Hobbyist Android Developer working with Compose, on custom CI/CD workflows.</li>
+        </ul>
+      </div>
+
+    </div>
+      {/* Project Cards */}
+      <div id="projects" />
+      <div className="flex flex-col dark:bg-neutral-800 bg-neutral-200 items-center pt-4 mt-8">
+        <div>
+          <h2 className="font-bold text-xl text-gray-800 dark:text-gray-200">Projects</h2>
         </div>
-             
-       
-  
-            {/* Buttons */}
-            <div className="flex justify-center pt-4 space-x-2">
-              <StyledButton name='Projects'>
-                <CodeProjectsIcon className="fill-transparent dark:stroke-sky-100 stoke-sky-900 w-4 h-4 mr-2" />
-              </StyledButton>
-  
-              <StyledButton name='About' >
-                <InfoIcon className="fill-transparent dark:stroke-sky-100 stoke-sky-900 w-4 h-4 mr-2" />
-              </StyledButton>
-  
-              <StyledButton name='Contact'>
-                <ContactIcon className="fill-transparent dark:stroke-sky-100 stoke-sky-900 w-4 h-4 mr-2" />  
-              </StyledButton>
-            </div>
-          
-          {/* Project Cards */}
-          <div className="p-8 justify-center self-center rounded grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-4 dark:bg-neutral-800 bg-neutral-200">
-             {cards}
-          </div>
+        <div className="p-8 justify-center self-center rounded grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-4 ">
+          {cards}
+        </div>
+      </div>
 
-        {/* Footer */}
-        <div className='flex-none flex flex-col items-center pt-4 pb-2'>
-          <Copyright />
-          </div>
-        {/* End footer */}
-       
-      </main>
+      <div id="contact" />
+      <div className="flex flex-col dark:bg-neutral-800 px-4 py-3 bg-neutral-200 items-center pt-4 mt-8">
+      <div>
+        <h2 className="font-bold text-xl py-2 text-gray-800 dark:text-gray-200">Contact</h2>
+      </div>
+      <div className="rounded py-1 px-7 dark:bg-neutral-700 bg-neutral-300">
+        <ul className="list-disc text-medium py-4 text-gray-800 dark:text-gray-200">
+          <li>Find me on Github</li>
+          <li>Send me an email: goldy131992@gmail.com</li>
+        </ul>
+      </div>
+
+    </div>
+
+  
+
+  {/* Footer */}
+  <div className='flex-none flex flex-col items-center pt-4 pb-2'>
+    <Copyright />
+    </div>
+  {/* End footer */}
+  
+</main>
     );
   }
   

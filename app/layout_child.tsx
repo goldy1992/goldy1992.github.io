@@ -11,8 +11,8 @@ export default function RootChild({
 }) {
   const darkModeContext = useContext(IsDarkModeContext)
   var darkMode = darkModeContext.enabled
-  const htmlClass = darkMode ? "dark" : ""
-  
+  const isDarkMode = darkMode ? "dark" : ""
+  const htmlClass = isDarkMode + " scroll-smooth"
   const bodyClassName = 'bg-neutral-100 dark:bg-neutral-900 ' + inter.className
 return (
 
@@ -20,6 +20,7 @@ return (
       <html lang="th" className={htmlClass}>
 
         <body className={bodyClassName}>
+          <div id="home" />
           <div className='bg-neutral-100 dark:bg-neutral-900'>
             {children}
           </div>
