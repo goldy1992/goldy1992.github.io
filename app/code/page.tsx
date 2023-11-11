@@ -7,7 +7,7 @@ export default function CodeBlock() {
         "@Composable", 
         "private fun", 
         "HelloWorld", 
-        "{", 
+        "(", 
         "   modifier: Modifier", 
         ") {", 
         "   Text", 
@@ -17,8 +17,7 @@ export default function CodeBlock() {
         "    )", 
         "} "
     ]
-    const typed_code_blocks = MultiTypeWriter(code_blocks)
-
+    const [typed_code_blocks, cursor_visible, cursorPosition] = MultiTypeWriter(code_blocks)
     return (
         <main>
             <div className="flex flex-col">
@@ -35,7 +34,7 @@ export default function CodeBlock() {
                         </div>
                 
                     </div>
-                    <div className="bg-slate-800 w-full relative flex-auto">
+                    <div className="dark:bg-slate-800 bg-slate-100 w-full relative flex-auto">
                         <pre className="flex flex-no-wrap min-h-full text-sm leading-6">
                         <div aria-hidden="true" className="text-slate-600 py-4 pr-4 text-right select-none w-[50px]" >
                         1{"\n"}
@@ -49,13 +48,13 @@ export default function CodeBlock() {
 9<br/>
 </div>
 <code className="flex-grow relative block break-normal text-slate-50 pt-4 pb-4 px-4 overflow-auto">
-    <span className="text-yellow-300">{typed_code_blocks[0]}</span><br/>
-    <span className="text-orange-400">{typed_code_blocks[1]}</span> <span className="text-yellow-600">{typed_code_blocks[2]}</span>{typed_code_blocks[3]}<br/>
-    {typed_code_blocks[4]}<br/>{typed_code_blocks[5]}<br/>
-         <span className="text-green-300">{typed_code_blocks[6]}</span>{typed_code_blocks[7]}<br/>
-        <span className="text-blue-400">{typed_code_blocks[8]}</span><span className="text-green-500">{typed_code_blocks[9]}</span><br/>
-        {typed_code_blocks[10]}<br/>
-        {typed_code_blocks[11]}<br />
+    <span className="dark:text-yellow-300 text-yellow-500">{typed_code_blocks[0]}</span>{(cursor_visible && (cursorPosition == 0)) && "|" }<br/>
+    <span className="dark:text-orange-400 text-blue-700">{typed_code_blocks[1]}</span>{(cursor_visible && (cursorPosition == 1)) && "|" } <span className="dark:text-amber-300 text-teal-600">{typed_code_blocks[2]}</span>{(cursor_visible && (cursorPosition == 2)) && "|" }{typed_code_blocks[3]}{(cursor_visible && (cursorPosition == 3)) && "|" }<br/>
+    {typed_code_blocks[4]}{(cursor_visible && (cursorPosition == 4)) && "|" }<br/>{typed_code_blocks[5]}{(cursor_visible && (cursorPosition == 5)) && "|" }<br/>
+         <span className="text-green-300">{typed_code_blocks[6]}</span>{(cursor_visible && (cursorPosition == 6)) && "|" }{typed_code_blocks[7]}{(cursor_visible && (cursorPosition == 7)) && "|" }<br/>
+        <span className="text-blue-400">{typed_code_blocks[8]}</span>{(cursor_visible && (cursorPosition == 8)) && "|" }<span className="text-green-500">{typed_code_blocks[9]}</span>{(cursor_visible && (cursorPosition == 9)) && "|" }<br/>
+        {typed_code_blocks[10]}{(cursor_visible && (cursorPosition == 10)) && "|" }<br/>
+        {typed_code_blocks[11]}{(cursor_visible && (cursorPosition == 11)) && "|" }<br />
 
 </code>
 

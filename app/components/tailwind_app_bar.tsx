@@ -17,9 +17,10 @@ export default function TailwindAppBar() {
         <Image
           src={github_image}
           alt="Github"
-          className="flex-none"
-          width={25}
-          height={25}
+          width="0"
+          height="0"
+          className="flex-none w-full h-auto"
+          style={{width: 25, height: 25}}
         />
 
         <div className="text-gray-800 dark:text-gray-200 font-medium text-lg">

@@ -12,10 +12,11 @@ export default function MultiTypeWriter(
     strings : Array<string>, 
     delay : number = default_type_delay,
     infinite: boolean = true,
-) : Array<string> {
+) : Array<any> {
     const [currentText, setCurrentText] = useState<Array<string>>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [textCursorVisible, setTextCursorVisible] = useState(true);
+    const [cursorPosition, setCursorPosition] = useState(0)
     const [isTyping, setIsTyping] = useState(false)
     let lastIdx = getStringArrayLength(strings)
     
@@ -25,6 +26,7 @@ export default function MultiTypeWriter(
             setIsTyping(true);
             timeout = setTimeout(() => {
                 setCurrentText(createTypedStringArray(currentIndex, strings))
+                setCursorPosition(getIdxOfCurrentString(currentIndex, strings))
                 setCurrentIndex((prevIndex) => prevIndex + 1);
             }, delay);
         } else if (infinite) {
@@ -37,6 +39,7 @@ export default function MultiTypeWriter(
                 }
                 setCurrentText(toPush)
                 setCurrentIndex(0);
+                setCursorPosition(0)
             }, text_retype_delay);
         }
       
@@ -57,7 +60,7 @@ export default function MultiTypeWriter(
         return () => clearTimeout(timeout);
     }, [isTyping, textCursorVisible]);
 
-    return currentText
+    return Array<any>(currentText, textCursorVisible, cursorPosition)
 }
 
 function getStringArrayLength(strings: Array<string>) {
