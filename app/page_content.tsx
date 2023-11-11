@@ -65,7 +65,7 @@ export default function PageContent() : JSX.Element {
     <main> 
       <div id="home" />
       <div className='flex flex-col'>   
-        <motion.div style={{ scaleX: scrollYProgress }} className='origin-bottom-left fixed place-self-start bottom-0 left-0 right-0 h-1 bg-black dark:bg-white' />
+        <motion.div style={{ scaleX: scrollYProgress }} className='origin-bottom-left fixed place-self-start bottom-0 left-0 right-0 h-1 bg-sky-400 dark:bg-sky-800' />
         <TailwindAppBar />
         <FloatingHomeButton onClick={() =>
           scrollToFn("home")
@@ -78,7 +78,7 @@ export default function PageContent() : JSX.Element {
       {/* Buttons */}
       <div className="flex justify-center pt-4 space-x-2">
         <StyledButton name='Projects' scrollTo="projects">
-          <CodeProjectsIcon className="fill-transparent dark:stroke-sky-100 stoke-sky-900 w-4 h-4 mr-2" />
+          <CodeProjectsIcon className="fill-transparent dark:stroke-sky-100 stoke-sky-900 w-6 h-6 mr-2" />
         </StyledButton>
 
         <StyledButton name='About' scrollTo="about">
@@ -90,11 +90,11 @@ export default function PageContent() : JSX.Element {
         </StyledButton>
       </div>
     <div id="about" />
-    <div className="flex flex-col dark:bg-neutral-800 px-4 py-3 bg-neutral-200 items-center pt-4 mt-8">
+    <div className="flex flex-col px-4 py-3 items-center pt-4 mt-8">
       <div>
         <h2 className="font-bold text-xl py-2 text-gray-800 dark:text-gray-200">About Me</h2>
       </div>
-      <div className="rounded py-1 px-7 dark:bg-neutral-700 bg-neutral-300">
+      <div className="rounded py-1 px-7 dark:bg-neutral-800 bg-neutral-200">
         <ul className="list-disc text-medium py-4 text-gray-800 dark:text-gray-200">
           <li>7+ years as a full-stack developer working with enterprise applications.</li>
           <li>Experience developing AWS Cloud Solutions along with writing Infrastructure as Code.</li>
@@ -105,7 +105,7 @@ export default function PageContent() : JSX.Element {
     </div>
       {/* Project Cards */}
       <div id="projects" />
-      <div className="flex flex-col dark:bg-neutral-800 bg-neutral-200 items-center pt-4 mt-8">
+      <div className="flex flex-col items-center pt-4 mt-8">
         <div>
           <h2 className="font-bold text-xl text-gray-800 dark:text-gray-200">Projects</h2>
         </div>
@@ -115,14 +115,14 @@ export default function PageContent() : JSX.Element {
       </div>
 
       <div id="contact" />
-      <div className="flex flex-col dark:bg-neutral-800 px-4 py-3 bg-neutral-200 items-center pt-4 mt-8">
+      <div className="flex flex-col px-4 py-3 items-center pt-4 mt-8">
       <div>
         <h2 className="font-bold text-xl py-2 text-gray-800 dark:text-gray-200">Contact</h2>
       </div>
-      <div className="rounded py-1 px-7 dark:bg-neutral-700 bg-neutral-300">
+      <div className="rounded py-1 px-7 dark:bg-neutral-800 bg-neutral-200">
         <ul className="list-disc text-medium py-4 text-gray-800 dark:text-gray-200">
           <li>Find me on Github</li>
-          <li>Send me an email: goldy131992@gmail.com</li>
+          <li>Send me an email: <a href="mailto:goldy131992@gmail.com">goldy131992@gmail.com</a></li>
         </ul>
       </div>
 
