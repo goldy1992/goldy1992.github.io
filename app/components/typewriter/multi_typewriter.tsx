@@ -11,7 +11,9 @@ const text_cursor_delay = 700
 export default function MultiTypeWriter(
     strings : Array<string>, 
     delay : number = default_type_delay,
+    endDelay: number = text_retype_delay,
     infinite: boolean = true,
+    setComplete?: (complete: boolean) => void
 ) : Array<any> {
     const [currentText, setCurrentText] = useState<Array<string>>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
