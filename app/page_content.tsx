@@ -1,4 +1,4 @@
-import { useScroll, motion } from "framer-motion";
+import { useScroll } from "framer-motion";
 import DefaultCard from "./cards/default_project_card";
 import { CodeProjectsIcon, InfoIcon, ContactIcon } from "./icons/icons";
 import { Project, ProjectBuilder } from "./project";
@@ -7,6 +7,7 @@ import TailwindAppBar from "./components/tailwind_app_bar";
 import TextWriter from "./text_writer";
 import FloatingHomeButton from "./components/floating_action_button";
 import { scrollToFn } from "./utils";
+import CodeEditor from "./components/code_block/code_block";
 
 
 const projects : Array<Project> = [
@@ -65,8 +66,10 @@ export default function PageContent() : JSX.Element {
     <main> 
       <div id="home" />
       <div className='flex flex-col'>   
-        <motion.div style={{ scaleX: scrollYProgress }} className='origin-bottom-left fixed place-self-start bottom-0 left-0 right-0 h-1 bg-sky-400 dark:bg-sky-800' />
+        {/* <motion.div style={{ scaleX: scrollYProgress }} className='origin-bottom-left fixed place-self-start bottom-0 left-0 right-0 h-1 bg-sky-400 dark:bg-sky-800' /> */}
+     
         <TailwindAppBar />
+        <CodeEditor />
         <FloatingHomeButton onClick={() =>
           scrollToFn("home")
         }
@@ -94,7 +97,7 @@ export default function PageContent() : JSX.Element {
       <div>
         <h2 className="font-bold text-xl py-2 text-gray-800 dark:text-gray-200">About Me</h2>
       </div>
-      <div className="rounded py-1 px-7 dark:bg-neutral-800 bg-neutral-200">
+      <div className="rounded py-1 px-7">
         <ul className="list-disc text-medium py-4 text-gray-800 dark:text-gray-200">
           <li>7+ years as a full-stack developer working with enterprise applications.</li>
           <li>Experience developing AWS Cloud Solutions along with writing Infrastructure as Code.</li>
@@ -119,7 +122,7 @@ export default function PageContent() : JSX.Element {
       <div>
         <h2 className="font-bold text-xl py-2 text-gray-800 dark:text-gray-200">Contact</h2>
       </div>
-      <div className="rounded py-1 px-7 dark:bg-neutral-800 bg-neutral-200">
+      <div className="rounded py-1 px-7">
         <ul className="list-disc text-medium py-4 text-gray-800 dark:text-gray-200">
           <li>Find me on Github</li>
           <li>Send me an email: <a href="mailto:goldy131992@gmail.com">goldy131992@gmail.com</a></li>
