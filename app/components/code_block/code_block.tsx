@@ -1,3 +1,4 @@
+import React, { useState, ReactNode } from "react"
 import MultiTypeWriter from "../typewriter/multi_typewriter"
 import CodeEditorTitleBar from "./header"
 
@@ -16,11 +17,11 @@ const textValue = "\"Hello world\""
 const textFunClose = "    )"
 const functionClose = "} "
 
-export function ModifierFillMaxSize() {
+export function ModifierFillMaxSize({onComplete}: {onComplete? : () => void}) {
     const code_blocks = [
         modifierFillMaxSize
     ]
-    const [typed_code_blocks, cursor_visible, cursorPosition] = MultiTypeWriter(code_blocks)
+    const [typed_code_blocks, cursor_visible, cursorPosition] = MultiTypeWriter(code_blocks, onComplete)
 
     return (
         <CodeBlock numberOfLines={9} >
@@ -38,7 +39,7 @@ export function ModifierFillMaxSize() {
 }
 
 
-export function HelloWorldCodeBlock() {
+export function HelloWorldCodeBlock({onComplete}: {onComplete? : () => void}) {
     const code_blocks = [
         "@Composable", 
         "private fun", 
@@ -53,7 +54,7 @@ export function HelloWorldCodeBlock() {
         "    )", 
         "} "
     ]
-    const [typed_code_blocks, cursor_visible, cursorPosition] = MultiTypeWriter(code_blocks)
+    const [typed_code_blocks, cursor_visible, cursorPosition] = MultiTypeWriter(code_blocks, onComplete)
 
     return (
         <CodeBlock numberOfLines={9} >
@@ -69,11 +70,14 @@ export function HelloWorldCodeBlock() {
     )
 }
 
+type OnCompleteFn = (idx: number) => void
+type OnComplete = () => void
+type ReactOnComplete = (oc: OnComplete) => ReactNode;
+type ReactOnCompleteArray = Array<ReactOnComplete>
+
 export function CodeBlock({children, numberOfLines}:{children: any, numberOfLines: number}) {
-    console.log("calling code block")
     var lineNumbers = ""
     for (let i=1; i < numberOfLines; i++) {
-        console.log("new line " + lineNumbers + ", " + i)
         lineNumbers += i + "\n"
     }
     lineNumbers += numberOfLines
@@ -92,12 +96,32 @@ export function CodeBlock({children, numberOfLines}:{children: any, numberOfLine
 }
 
 export default function CodeEditor() {
+    const currentCode = TypingOrchestrator()
+
+ 
     return (
         <div className="mt-10 pt-8 grid grid-cols-12 grid-rows-5 mt-4">
             <div className="border-b border-slate-500/30 col-start-2 col-span-10 row-start-1 rounded row-span-2" >
                 <CodeEditorTitleBar />
-                <ModifierFillMaxSize />
+                {currentCode}
             </div>
         </div>
     )
+}
+
+export function TypingOrchestrator() : React.ReactNode {
+    const [currentIndex, setCurrentIndex] = useState(0)
+
+    const states : ReactOnCompleteArray = [
+        (onComp: ()=> void) => (<HelloWorldCodeBlock onComplete={onComp}  />),
+        (onComp: ()=> void) => (<ModifierFillMaxSize onComplete={onComp}  />)
+    ]
+
+    const onComplete = (idx: number) => {
+        if (idx < (states.length-1)) {
+            setCurrentIndex(idx + 1)      
+        } 
+    }
+
+    return (states[currentIndex](() => {onComplete(currentIndex)}))
 }
