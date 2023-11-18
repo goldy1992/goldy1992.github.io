@@ -3,6 +3,8 @@ import React, { useState, ReactNode } from "react"
 import MultiTypeWriter from "../typewriter/multi_typewriter"
 import CodeEditorTitleBar from "./header"
 import { ComposableAnnotation, KotlinDefaultText, KotlinKeyword, KotlinMethodName, composableTag, functionClose, functionOpen, methodName, methodSignatureClose, methodSignatureOpen, modifierDeclaration, previewTag, privateFun, space, tab, tab2, textFun, textFunClose, textFunTextParam, textValue } from "./code_text"
+import ICodeState from "./ICodeState"
+import CodeRenderer from "./renderer"
 
 export function ModifierFillMaxSize({onComplete}: {onComplete? : () => void}) {
     const code_blocks = [ ""
@@ -26,7 +28,11 @@ export function ModifierFillMaxSize({onComplete}: {onComplete? : () => void}) {
 }
 
 
-export function HelloWorldCodeBlock({onComplete}: {onComplete? : () => void}) {
+export function HelloWorldCodeBlock({onAnimationComplete, onTypingComplete}: 
+    {
+        onAnimationComplete? : () => void, 
+        onTypingComplete? : () => void
+    }) {
     const code_blocks = [
         previewTag,
         composableTag, 
@@ -42,7 +48,7 @@ export function HelloWorldCodeBlock({onComplete}: {onComplete? : () => void}) {
         tab + methodSignatureClose, 
         functionClose
     ]
-    const [typed_code_blocks, cursor_visible, cursorPosition] = MultiTypeWriter(code_blocks, onComplete)
+    const [typed_code_blocks, cursor_visible, cursorPosition] = MultiTypeWriter(code_blocks, onTypingComplete, onAnimationComplete)
 
     let currentPreviewTag = typed_code_blocks[0]
     let isTypingPreview = cursor_visible && (cursorPosition == 0)
@@ -58,7 +64,8 @@ export function HelloWorldCodeBlock({onComplete}: {onComplete? : () => void}) {
     let isTypingModifierDeclaration = cursor_visible && (cursorPosition == 5)
     let currentMethodSignatureClose = typed_code_blocks[6]
     let isTypingMethodSignatureClose= cursor_visible && (cursorPosition == 6)
-    console.log("rendering " + typed_code_blocks)
+
+    // Fixes server side rendering undefined when the array is empty!
     if (typed_code_blocks.length <= 0) {
         return <CodeBlock numberOfLines={9} >
             </CodeBlock>
@@ -88,6 +95,8 @@ export function HelloWorldCodeBlock({onComplete}: {onComplete? : () => void}) {
 }
 
 
+
+
 export function CodeBlock({children, numberOfLines}:{children: any, numberOfLines: number}) {
     var lineNumbers = ""
     for (let i=1; i < numberOfLines; i++) {
@@ -109,8 +118,8 @@ export function CodeBlock({children, numberOfLines}:{children: any, numberOfLine
 }
 
 export default function CodeEditor() {
-    const [currentCodeIndex, setCurrentCodeIndex] = useState(0)
-    const currentCode = TypingOrchestrator(currentCodeIndex, setCurrentCodeIndex)
+    const [codeState, setCodeState] = useState<ICodeState>({ "currentIndex": 0, "canRender": false})
+    const currentCode = TypingOrchestrator(codeState, setCodeState)
 
     console.log("current code = " + currentCode)
     return (
@@ -119,33 +128,39 @@ export default function CodeEditor() {
                 <CodeEditorTitleBar /> 
                 {currentCode}
             </div>
-            <div className="flex-1 bg-yellow-500 rounded" />
+            <div className="flex-1 rounded bg-yellow-400">
+                <CodeRenderer codeState={codeState} />
+            </div>
         </div>
 
     )
 }
 
 
-type OnCompleteFn = (idx: number) => void
 type OnComplete = () => void
-type ReactOnComplete = (oc: OnComplete) => ReactNode;
+type ReactOnComplete = (onTypingComplete: OnComplete, onAnimationComplete: OnComplete) => ReactNode;
 type ReactOnCompleteArray = Array<ReactOnComplete>
 
 export function TypingOrchestrator(
-    currentIndex: number, 
-    setCurrentIndex: React.Dispatch<React.SetStateAction<number>>) : React.ReactNode {
-    // const [currentIndex, setCurrentIndex] = useState(0)
+    codeState: ICodeState, 
+    setCodeState: React.Dispatch<React.SetStateAction<ICodeState>>) : React.ReactNode {
 
     const states : ReactOnCompleteArray = [
-        (onComp: OnComplete) => (<HelloWorldCodeBlock onComplete={onComp}  />),
+        (onComp: OnComplete, onAnimComp: OnComplete) => (<HelloWorldCodeBlock onTypingComplete={onComp} onAnimationComplete={onAnimComp}  />),
    //     (onComp: OnComplete) => (<ModifierFillMaxSize onComplete={onComp}  />)
     ]
 
-    const onComplete = (idx: number) => {
+    const onAnimationComplete = (idx: number) => {
         if (idx < (states.length-1)) {
-            setCurrentIndex(idx + 1)      
+            setCodeState({"currentIndex": idx + 1, "canRender": false})      
         } 
     }
 
-    return (states[currentIndex](() => {onComplete(currentIndex)}))
+    const onTypingComplete = (idx: number) => {
+        setCodeState({"currentIndex": idx, "canRender": true})      
+    }
+
+    return (states[codeState.currentIndex](
+        () => {onTypingComplete(codeState.currentIndex)},
+        () => {onAnimationComplete(codeState.currentIndex)}))
 }

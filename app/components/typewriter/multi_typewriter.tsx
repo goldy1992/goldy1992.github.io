@@ -10,10 +10,11 @@ const text_cursor_delay = 700
 
 export default function MultiTypeWriter(
     strings : Array<string>, 
-    onComplete?: () => void,
-        delay: number = default_type_delay,
-        endDelay: number = text_retype_delay,
-        infinite: boolean = false,
+    onAnimationComplete?: () => void,
+    onTypingComplete?: () => void,
+    delay: number = default_type_delay,
+    endDelay: number = text_retype_delay,
+    infinite: boolean = false,
 ) : Array<any> {
     const [currentText, setCurrentText] = useState<Array<string>>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -33,7 +34,9 @@ export default function MultiTypeWriter(
             }, delay);
         } else {
             setIsTyping(false);
-            // ADD THIS CHECK
+            if (onTypingComplete != null) {
+                onTypingComplete()
+            }
             timeout = setTimeout(() => {
 
                 if (infinite) {
@@ -45,8 +48,8 @@ export default function MultiTypeWriter(
                     setCurrentIndex(0)
                     setCursorPosition(0)
                 } else {
-                    if (onComplete != null) {
-                        onComplete()
+                    if (onAnimationComplete != null) {
+                        onAnimationComplete()
                     }
                 }
             }, endDelay);
