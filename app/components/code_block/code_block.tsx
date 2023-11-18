@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, ReactNode } from "react"
 import MultiTypeWriter from "../typewriter/multi_typewriter"
 import CodeEditorTitleBar from "./header"
@@ -57,7 +58,11 @@ export function HelloWorldCodeBlock({onComplete}: {onComplete? : () => void}) {
     let isTypingModifierDeclaration = cursor_visible && (cursorPosition == 5)
     let currentMethodSignatureClose = typed_code_blocks[6]
     let isTypingMethodSignatureClose= cursor_visible && (cursorPosition == 6)
-
+    console.log("rendering " + typed_code_blocks)
+    if (typed_code_blocks.length <= 0) {
+        return <CodeBlock numberOfLines={9} >
+            </CodeBlock>
+    }
     return (
         <CodeBlock numberOfLines={9} >
             <ComposableAnnotation currentText={currentPreviewTag} cursorVisible={isTypingPreview} />
@@ -107,7 +112,7 @@ export default function CodeEditor() {
     const [currentCodeIndex, setCurrentCodeIndex] = useState(0)
     const currentCode = TypingOrchestrator(currentCodeIndex, setCurrentCodeIndex)
 
- 
+    console.log("current code = " + currentCode)
     return (
         <div className="px-4 mt-12 flex flex-row justify-center gap-x-3 ">
             <div className="flex flex-1 flex-col overflow-x-auto">

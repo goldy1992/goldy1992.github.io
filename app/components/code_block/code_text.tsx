@@ -1,3 +1,4 @@
+'use client'
 // compose semantics
 export const tab = "  "
 export const tab2 = tab + tab

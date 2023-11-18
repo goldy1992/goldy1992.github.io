@@ -1,3 +1,4 @@
+'use client'
 import { useScroll } from "framer-motion";
 import DefaultCard from "./cards/default_project_card";
 import { CodeProjectsIcon, InfoIcon, ContactIcon } from "./icons/icons";

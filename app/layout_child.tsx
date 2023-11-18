@@ -1,3 +1,4 @@
+'use client'
 import { IsDarkModeContext } from "@/dark_mode_context"
 import { Inter } from "next/font/google"
 import { useContext } from "react"
