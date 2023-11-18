@@ -2,7 +2,7 @@
 import React, { useState, ReactNode } from "react"
 import MultiTypeWriter from "../typewriter/multi_typewriter"
 import CodeEditorTitleBar from "./header"
-import { ComposableAnnotation, KotlinDefaultText, KotlinKeyword, KotlinMethodName, composableTag, functionClose, functionOpen, methodName, methodSignatureClose, methodSignatureOpen, modifierDeclaration, previewTag, privateFun, space, tab, tab2, textFun, textFunClose, textFunTextParam, textValue } from "./code_text"
+import { ComposableAnnotation, KotlinDefaultText, KotlinKeyword, KotlinMethodName, background, colorScheme, column, comma, composableTag, dot, fillMaxSize, functionClose, functionOpen, materialTheme, methodName, methodSignatureClose, methodSignatureOpen, modifierDeclaration, modifierLower, paramModifier, previewTag, primaryContainer, privateFun, space, tab, tab2, tab3, textFun, textFunClose, paramText, textValue, KotlinFrameworkComposableOrObject, KotlinMethodParam, KotlinField, KotlinString } from "./code_text"
 import ICodeState from "./ICodeState"
 import CodeRenderer from "./renderer"
 
@@ -19,7 +19,7 @@ export function ModifierFillMaxSize({onComplete}: {onComplete? : () => void}) {
         {modifierDeclaration}{typed_code_blocks[0]}{(cursor_visible && (cursorPosition == 0)) && "|" }<br/>
         {methodSignatureClose}<br/>
         <span className="text-green-300">{textFun}</span>{"textFunOpen"}<br/>
-        <span className="text-blue-400">{textFunTextParam}</span><span className="text-green-500">{textValue}</span><br/>
+        <span className="text-blue-400">{paramText}</span><span className="text-green-500">{textValue}</span><br/>
         {textFunClose}<br/>
         {functionClose}<br />
 
@@ -34,63 +34,90 @@ export function HelloWorldCodeBlock({onAnimationComplete, onTypingComplete}:
         onTypingComplete? : () => void
     }) {
     const code_blocks = [
-        previewTag,
         composableTag, 
         privateFun, 
-        methodName, 
+        space + methodName, 
         methodSignatureOpen,
         tab + modifierDeclaration,
         methodSignatureClose + space + functionOpen, 
-        textFun, 
+        tab + column,
+        methodSignatureOpen,
+        tab2 + paramModifier,
+        modifierLower + dot,
+        fillMaxSize,
+        methodSignatureOpen + methodSignatureClose,
+        tab3 + dot,
+        background,
+        methodSignatureOpen + materialTheme + dot,
+        colorScheme,
+        dot,
+        primaryContainer,
+        methodSignatureClose,
+        comma,
+        tab + methodSignatureClose + space + functionOpen,
+        tab2 + textFun, 
         methodSignatureOpen,  
-        tab2 + textFunTextParam, 
+        tab3 + paramText, 
         textValue, 
-        tab + methodSignatureClose, 
-        functionClose
+        tab2 + methodSignatureClose,
+        tab + functionClose,
+        functionClose + space
     ]
-    const [typed_code_blocks, cursor_visible, cursorPosition] = MultiTypeWriter(code_blocks, onTypingComplete, onAnimationComplete)
+    const [blocks, cursor_visible, cursorPosition] = MultiTypeWriter(code_blocks, onTypingComplete, onAnimationComplete)
 
-    let currentPreviewTag = typed_code_blocks[0]
-    let isTypingPreview = cursor_visible && (cursorPosition == 0)
-    let currentComposableTag = typed_code_blocks[1]
-    let isTypingComposableTag = cursor_visible && (cursorPosition == 1)
-    let currentPrivateFun = typed_code_blocks[2]
-    let isTypingPrivateFun = cursor_visible && (cursorPosition == 2)
-    let currentMethodName = typed_code_blocks[3]
-    let isTypingMethodName = cursor_visible && (cursorPosition == 3)
-    let currentMethodSignatureOpen = typed_code_blocks[4]
-    let isTypingMethodSignatureOpen = cursor_visible && (cursorPosition == 4)
-    let currentModifierDeclaration = typed_code_blocks[5]
-    let isTypingModifierDeclaration = cursor_visible && (cursorPosition == 5)
-    let currentMethodSignatureClose = typed_code_blocks[6]
-    let isTypingMethodSignatureClose= cursor_visible && (cursorPosition == 6)
-
+    let showCursorArray : Array<boolean> = []
+    for (let n = 0; n < blocks.length; n++) {
+        showCursorArray.push(cursor_visible && (cursorPosition == n))
+    }
+ 
     // Fixes server side rendering undefined when the array is empty!
-    if (typed_code_blocks.length <= 0) {
-        return <CodeBlock numberOfLines={9} >
+    if (blocks.length <= 0) {
+        return <CodeBlock numberOfLines={14} >
             </CodeBlock>
     }
     return (
-        <CodeBlock numberOfLines={9} >
-            <ComposableAnnotation currentText={currentPreviewTag} cursorVisible={isTypingPreview} />
+        <CodeBlock numberOfLines={14} >
+            <ComposableAnnotation currentText={blocks[0]} cursorVisible={showCursorArray[0]} />
             <br/>
-            <ComposableAnnotation currentText={currentComposableTag} cursorVisible={isTypingComposableTag} />
+            <KotlinKeyword currentText={blocks[1]} cursorVisible={showCursorArray[1]} />
+            <KotlinMethodName currentText={blocks[2]} cursorVisible={showCursorArray[2]}/>
+            <KotlinDefaultText currentText={blocks[3]} cursorVisible={showCursorArray[3]} />
             <br/>
-            <KotlinKeyword currentText={currentPrivateFun} cursorVisible={isTypingPrivateFun} />
-            <KotlinMethodName currentText={ space + currentMethodName} cursorVisible={isTypingMethodName}/>
-            <KotlinDefaultText currentText={currentMethodSignatureOpen} cursorVisible={isTypingMethodSignatureOpen} />
+            <KotlinDefaultText currentText={blocks[4]} cursorVisible={showCursorArray[4]} />
             <br/>
-            <KotlinDefaultText currentText={currentModifierDeclaration} cursorVisible={isTypingModifierDeclaration} />
-            <br/>
-            <KotlinDefaultText currentText={currentMethodSignatureClose} cursorVisible={isTypingMethodSignatureClose} />
-
-            {/* {typed_code_blocks[4]}{(cursor_visible && (cursorPosition == 4)) && "|" }<br/>{typed_code_blocks[5]}{(cursor_visible && (cursorPosition == 5)) && "|" }<br/>
-            <span className="text-green-300">{typed_code_blocks[6]}</span>{(cursor_visible && (cursorPosition == 6)) && "|" }{typed_code_blocks[7]}{(cursor_visible && (cursorPosition == 7)) && "|" }<br/>
-            <span className="text-blue-400">{typed_code_blocks[8]}</span>{(cursor_visible && (cursorPosition == 8)) && "|" }<span className="text-green-500">{typed_code_blocks[9]}</span>{(cursor_visible && (cursorPosition == 9)) && "|" }<br/>
-            {typed_code_blocks[10]}{(cursor_visible && (cursorPosition == 10)) && "|" }<br/>
-            {typed_code_blocks[11]}{(cursor_visible && (cursorPosition == 11)) && "|" }<br /> */}
-
-            </CodeBlock>
+            <KotlinDefaultText currentText={blocks[5]} cursorVisible={showCursorArray[5]} />
+            <br />
+            <KotlinFrameworkComposableOrObject currentText={blocks[6]} cursorVisible={showCursorArray[6]} />
+            <KotlinDefaultText currentText={blocks[7]} cursorVisible={showCursorArray[7]} />
+            <br />
+            <KotlinMethodParam currentText={blocks[8]} cursorVisible={showCursorArray[8]} />
+            <KotlinDefaultText currentText={blocks[9]} cursorVisible={showCursorArray[9]} />
+            <KotlinMethodName currentText={blocks[10]} cursorVisible={showCursorArray[10]}/>
+            <KotlinDefaultText currentText={blocks[11]} cursorVisible={showCursorArray[11]} />
+            <br />
+            <KotlinDefaultText currentText={blocks[12]} cursorVisible={showCursorArray[12]} />
+            <KotlinMethodName currentText={blocks[13]} cursorVisible={showCursorArray[13]}/>
+            <KotlinDefaultText currentText={blocks[14]} cursorVisible={showCursorArray[14]} />
+            <KotlinField currentText={blocks[15]} cursorVisible={showCursorArray[15]} />
+            <KotlinDefaultText currentText={blocks[16]} cursorVisible={showCursorArray[16]} />
+            <KotlinField currentText={blocks[17]} cursorVisible={showCursorArray[17]} />
+            <KotlinDefaultText currentText={blocks[18]} cursorVisible={showCursorArray[18]} />
+            <KotlinKeyword currentText={blocks[19]} cursorVisible={showCursorArray[19]}/>
+            <br />
+            <KotlinDefaultText currentText={blocks[20]} cursorVisible={showCursorArray[20]} />
+            <br />
+            <KotlinFrameworkComposableOrObject currentText={blocks[21]} cursorVisible={showCursorArray[21]}/>
+            <KotlinDefaultText currentText={blocks[22]} cursorVisible={showCursorArray[22]} />
+            <br />
+            <KotlinMethodParam currentText={blocks[23]} cursorVisible={showCursorArray[23]} />
+            <KotlinString currentText={blocks[24]} cursorVisible={showCursorArray[24]} />
+            <br />
+            <KotlinDefaultText currentText={blocks[25]} cursorVisible={showCursorArray[25]} />
+            <br />
+            <KotlinDefaultText currentText={blocks[26]} cursorVisible={showCursorArray[26]} />
+            <br />
+            <KotlinDefaultText currentText={blocks[27]} cursorVisible={showCursorArray[27]} />
+        </CodeBlock>
     )
 }
 
@@ -109,7 +136,7 @@ export function CodeBlock({children, numberOfLines}:{children: any, numberOfLine
                 <div aria-hidden="true" className="text-slate-600 py-4 pr-4 text-right select-none w-[50px]" >
                     {lineNumbers}
                 </div>
-                <code className="flex-none  block break-normal text-slate-50 pt-4 pb-4 px-4 overflow-auto">
+                <code className="flex-grow block break-normal text-slate-50 pt-4 pb-4 px-4 overflow-auto">
                     {children}
                 </code>
             </pre>
@@ -117,13 +144,13 @@ export function CodeBlock({children, numberOfLines}:{children: any, numberOfLine
     )
 }
 
-export default function CodeEditor() {
+export default function CodeEditor({className} : {className? : string}) {
     const [codeState, setCodeState] = useState<ICodeState>({ "currentIndex": 0, "canRender": false})
     const currentCode = TypingOrchestrator(codeState, setCodeState)
-
+    let rootClassName = "px-4 mt-12 flex flex-row justify-center gap-x-3 " + className 
     console.log("current code = " + currentCode)
     return (
-        <div className="px-4 mt-12 flex flex-row justify-center gap-x-3 ">
+        <div className={rootClassName}>
             <div className="flex flex-1 flex-col overflow-x-auto">
                 <CodeEditorTitleBar /> 
                 {currentCode}
@@ -157,6 +184,7 @@ export function TypingOrchestrator(
     }
 
     const onTypingComplete = (idx: number) => {
+        console.log("setting on typing complete, idx: " + idx + " canRender: true")
         setCodeState({"currentIndex": idx, "canRender": true})      
     }
 

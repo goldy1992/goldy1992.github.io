@@ -70,7 +70,7 @@ export default function PageContent() : JSX.Element {
         {/* <motion.div style={{ scaleX: scrollYProgress }} className='origin-bottom-left fixed place-self-start bottom-0 left-0 right-0 h-1 bg-sky-400 dark:bg-sky-800' /> */}
      
         <TailwindAppBar />
-        <CodeEditor />
+        <CodeEditor className="flex-grow" />
         <FloatingHomeButton onClick={() =>
           scrollToFn("home")
         }

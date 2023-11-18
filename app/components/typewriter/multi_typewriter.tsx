@@ -33,8 +33,10 @@ export default function MultiTypeWriter(
                 setCurrentIndex((prevIndex) => prevIndex + 1);
             }, delay);
         } else {
+            console.log("last index")
             setIsTyping(false);
             if (onTypingComplete != null) {
+                console.log("setting on Typing complete")
                 onTypingComplete()
             }
             timeout = setTimeout(() => {
