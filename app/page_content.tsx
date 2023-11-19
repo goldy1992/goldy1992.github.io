@@ -76,7 +76,7 @@ export default function PageContent() : JSX.Element {
         }
          /> 
         {/* Hero unit */}
-        <TextWriter />
+        {/* <TextWriter /> */}
       </div>
   
       {/* Buttons */}

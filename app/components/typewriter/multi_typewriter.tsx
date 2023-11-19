@@ -10,11 +10,8 @@ const text_cursor_delay = 700
 
 export default function MultiTypeWriter(
     strings : Array<string>, 
-    onAnimationComplete?: () => void,
-    onTypingComplete?: () => void,
+    onComplete?: () => void,
     delay: number = default_type_delay,
-    endDelay: number = text_retype_delay,
-    infinite: boolean = false,
 ) : Array<any> {
     const [currentText, setCurrentText] = useState<Array<string>>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -33,38 +30,15 @@ export default function MultiTypeWriter(
                 setCursorPosition(getIdxOfCurrentString(currentIndex, strings))
                 setCurrentIndex((prevIndex) => prevIndex + 1);
             }, delay);
-        } else {
-            if (isTyping) {
-            console.log("last index")
+        } else if (isTyping) {
             setIsTyping(false);
-                if (onTypingComplete != null) {
-                    console.log("setting on Typing complete")
-                   onTypingComplete()
-                }
-            } else {
-                console.log ("typing false setting anim complete")
-                timeout = setTimeout(() => {
-
-                    if (infinite) {
-                        let toPush = []
-                        for (let i = 0; i < strings.length; i++) {
-                            toPush.push("")
-                        }
-                        setCurrentText(toPush)
-                        setCurrentIndex(0)
-                        setCursorPosition(0)
-                    } else {
-                        if (onAnimationComplete != null) {
-                            console.log("setting on animation complete")    
-                            onAnimationComplete()
-                        }
-                    }
-                }, endDelay);
+            if (onComplete != null) {
+                console.log("setting onComplete")
+               onComplete()
             }
         }
-        console.log("clearing timeout")
-          return () => clearTimeout(timeout);
-        }, [currentIndex, delay, infinite, isTyping]);
+        return () => clearTimeout(timeout);
+    }, [currentIndex, delay, isTyping]);
 
     useEffect(()=> {
         let timeout: NodeJS.Timeout;
