@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 
 const text_retype_delay = 5000
 const terminal_cursor = ">  "
-const default_type_delay=50
+const default_type_delay=25
 const text_cursor = "|"
 const text_cursor_delay = 700
 
@@ -24,6 +24,7 @@ export default function MultiTypeWriter(
     let lastIdx = getStringArrayLength(strings)
     
     useEffect(()=> {
+        console.log("hit useEffect")
         let timeout : NodeJS.Timeout;
         if (currentIndex < lastIdx) {          
             setIsTyping(true);
@@ -33,32 +34,37 @@ export default function MultiTypeWriter(
                 setCurrentIndex((prevIndex) => prevIndex + 1);
             }, delay);
         } else {
+            if (isTyping) {
             console.log("last index")
             setIsTyping(false);
-            if (onTypingComplete != null) {
-                console.log("setting on Typing complete")
-                onTypingComplete()
-            }
-            timeout = setTimeout(() => {
-
-                if (infinite) {
-                    let toPush = []
-                    for (let i = 0; i < strings.length; i++) {
-                        toPush.push("")
-                    }
-                    setCurrentText(toPush)
-                    setCurrentIndex(0)
-                    setCursorPosition(0)
-                } else {
-                    if (onAnimationComplete != null) {
-                        onAnimationComplete()
-                    }
+                if (onTypingComplete != null) {
+                    console.log("setting on Typing complete")
+                   onTypingComplete()
                 }
-            }, endDelay);
+            } else {
+                console.log ("typing false setting anim complete")
+                timeout = setTimeout(() => {
+
+                    if (infinite) {
+                        let toPush = []
+                        for (let i = 0; i < strings.length; i++) {
+                            toPush.push("")
+                        }
+                        setCurrentText(toPush)
+                        setCurrentIndex(0)
+                        setCursorPosition(0)
+                    } else {
+                        if (onAnimationComplete != null) {
+                            console.log("setting on animation complete")    
+                            onAnimationComplete()
+                        }
+                    }
+                }, endDelay);
+            }
         }
-      
+        console.log("clearing timeout")
           return () => clearTimeout(timeout);
-        }, [currentIndex, delay, infinite]);
+        }, [currentIndex, delay, infinite, isTyping]);
 
     useEffect(()=> {
         let timeout: NodeJS.Timeout;

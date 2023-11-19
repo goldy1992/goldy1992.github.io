@@ -179,6 +179,7 @@ export function TypingOrchestrator(
 
     const onAnimationComplete = (idx: number) => {
         if (idx < (states.length-1)) {
+            console.log("setting on animation complete, idx: " + idx + " canRender: true")
             setCodeState({"currentIndex": idx + 1, "canRender": false})      
         } 
     }
