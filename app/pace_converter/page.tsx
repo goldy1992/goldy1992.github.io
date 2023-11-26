@@ -122,92 +122,108 @@ export default function PageContent() : JSX.Element {
       <main> 
         <div id="home" />
         <TailwindAppBar />
-        <div className='grid grid-cols-1 sm:grid-cols-6 gap-x-6 gap-y-4 bg-yellow-500 px-4 pt-12'>   
-    
-    
-            <span className="flex-none sm:col-span-4 text-xl font-bold leading-10">Convert Running Paces</span>
-            <span className="flex-none sm:col-span-6 text-lg">Input</span>
+        <div className='grid grid-cols-1 sm:grid-cols-5 gap-x-6 gap-y-4 px-4 py-12 mb-12 text-gray-800 dark:text-gray-200'>   
+            <div className="sm:col-span-3 sm:col-start-2 flex flex-col sm:gap-x-2 gap-y-3 flex-wrap border-2 border-gray-500 bg-sky-50 dark:bg-gray-900 px-6 py-10 rounded-xl">
 
-            <div className="sm:col-span-2">
-                <label htmlFor="hours" className="block text-sm font-medium leading-6 text-gray-900">Hours</label>
-                <input type="text" inputMode="numeric" id="hours" placeholder="hours"
-                className="pl-2 py-2 border-0 rounded-md sm:leading-6 ring-1 focus:ring-inset text-sm"
-                onChange={(hrs : any) => {
-                    let number = Number(hrs.currentTarget.value)
-                    if (!isNaN(number)) {
-                        setInputHours(number)
-                    }
-                }}/>
-            </div>
-            
-            <div className="sm:col-span-2">
-                <label htmlFor="minutes" className="block text-sm font-medium leading-6 text-gray-900">Minutes</label>
-                <input type="text" id="minutes" placeholder="minutes" 
-                className="pl-2 py-2 border-0 rounded-md sm:leading-6 ring-1 focus:ring-inset text-sm"
-                onChange={(mins) => {
-                    let number = Number(mins.currentTarget.value)
-                    if (!isNaN(number)) {
-                        setInputMinutes(number)
-                    }
-                }}/>
-            </div>
-            <div className="sm:col-span-2">
-                <label htmlFor="seconds" className="block text-sm font-medium leading-6 text-gray-900">Seconds</label>
-                <input type="text" id="seconds" placeholder="seconds" 
-                className="pl-2 py-2 border-0 rounded-md sm:leading-6 ring-1 focus:ring-inset text-sm"
-                onChange={(secs : any) => {
-                    let number = Number(secs.currentTarget.value)
-                    if (!isNaN(number)) {
-                        setInputSeconds(number)
-                    }
-                }}/>
-            </div>
+                <span className="flex-none text-2xl font-bold leading-10">Convert Running Paces</span>
+                {/* Units */}
+                <div className="flex-col space-y-2 pt-2">
+                    <span className="block text-m leading-6">Units</span>
+                    <div className="sm:flex sm:gap-x-2 sm:flex-wrap">
+                        <div className="sm:flex-none flex items-center gap-x-3">
+                            <input type="radio" id="minPerKm" checked={isKm} onChange={() => setIsKm(true) } />
+                            <label htmlFor="minPerKm" className="pr-2 text-sm">min/km</label>
+                        </div>
+                        <div className="sm:flex-none flex items-center gap-x-3">
+                            <input type="radio" id="minPerMile" checked={!isKm} onChange={() => setIsKm(false) }/>
+                            <label className="text-sm" htmlFor="minPerMile">min/mile</label>
+                        </div>
+                    </div>
+                </div>
+
+                { /* Input */}
+                <div className="flex-col space-y-2 py-2">
+                    <span className="flex-none text-m leading-6">Input</span>
+                    <div className="flex flex-col sm:flex-row gap-y-2 sm:gap-x-2 sm:flex-wrap">
+                        <div className="sm:flex-1 flex-col space-y-2">
+                            <label htmlFor="hours" className="block text-xs leading-2">Hours</label>
+                            <input type="text" inputMode="numeric" id="hours" placeholder="0"
+                            className="pl-2 py-2 border-0 appearance-none rounded-md sm:leading-6 ring-1 focus:ring-inset text-sm bg-sky-100 dark:bg-sky-900"
+                            onChange={(hrs : any) => {
+                                let number = Number(hrs.currentTarget.value)
+                                if (!isNaN(number)) {
+                                    setInputHours(number)
+                                }
+                            }}/>
+                        </div>        
+                        <div className="sm:flex-1 flex-col space-y-2">
+                            <label htmlFor="minutes" className="block text-xs leading-2">Minutes</label>
+                            <input type="text" id="minutes" placeholder="0" 
+                            className="pl-2 py-2 border-0 rounded-md sm:leading-6 ring-1 focus:ring-inset text-sm bg-sky-100 dark:bg-sky-900"
+                            onChange={(mins) => {
+                                let number = Number(mins.currentTarget.value)
+                                if (!isNaN(number)) {
+                                    setInputMinutes(number)
+                                }
+                            }}/>
+                        </div>
+                        <div className="sm:flex-1 flex-col space-y-2">
+                            <label htmlFor="seconds" className="block text-xs leading-2">Seconds</label>
+                            <input type="text" id="seconds" placeholder="0" 
+                            className="pl-2 py-2 border-0 rounded-md sm:leading-6 ring-1 focus:ring-inset text-sm bg-sky-100 dark:bg-sky-900"
+                            onChange={(secs : any) => {
+                                let number = Number(secs.currentTarget.value)
+                                if (!isNaN(number)) {
+                                    setInputSeconds(number)
+                                }
+                            }}/>
+                        </div>
+                    </div>
+                </div>
        
-            <div className="sm:col-span-6">
-            <span className="block">Units</span>
-            <div className="flex items-center gap-x-3">
-                <input type="radio" id="minPerKm" checked={isKm} onChange={() => setIsKm(true) } />
-                <label htmlFor="minPerKm" className="pr-2">min/km</label>
-            </div>
-            <div className="flex items-center gap-x-3">
-                <input type="radio" id="minPerMile" checked={!isKm} onChange={() => setIsKm(false) }/>
-                <label htmlFor="minPerMile">min/mile</label>
-            </div>
-        </div>
-        <div className="sm:col-span-4">
-            <span className="block text-m">Pace per {isKm ? "mile" : "km"}</span>
-            <span className="block text-m font-bold">{outputHours + "h " + outputMinutes + "m " + outputSeconds + "s"} </span>
-        </div>
-        <div className="sm:col-span-4">
 
-            <table className="table-auto border-collapse border border-slate-500 w-full">
+       
+        <div className="my-5 w-full h-[1px] bg-gray-500" />
+        <div className="flex-none flex-col space-y-1">
+            <p className="block text-l leading-6">Pace in <span className="font-bold">{isKm ? "min/mile" : "min/km"}</span></p>
+            <span className="block text-s leading-6 font-bold">{outputHours + "h " + outputMinutes + "m " + outputSeconds + "s"} </span>
+        </div>
+
+
+
+            <table className="table-auto border-separate border border-slate-500 border-spacing-0 w-full rounded">
+            <caption className="caption-top py-1 text-xs">
+                    Summary of race distance times running at this pace.
+                </caption>
                 <thead>
-                    <tr className="border-collapse border border-slate-500">
-                        <th rowSpan={2}className="border-collapse border border-slate-500">Race Distance</th>
-                        <th colSpan={3}className="border-collapse border border-slate-500">Time</th>
+     
+                    <tr className="">
+                        <th rowSpan={2}className="px-2 py-2">Race Distance</th>
+                        <th colSpan={3}className="border-s border-slate-500 px-2 py-2">Time</th>
                     </tr>
-                    <tr className="border-collapse border border-slate-500">
-                        <th className="border-collapse border border-slate-500">h</th>
-                        <th>m</th>
-                        <th>s</th>
+                    <tr>
+                        <th className="border-separate border-t border-s border-slate-500">h</th>
+                        <th className="border-separate border-t border-s border-slate-500">m</th>
+                        <th className="border-separate border-t border-s border-slate-500">s</th>
                     </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td className="border-collapse border border-slate-500">Half Marathon</td>
-                    <td className="border-collapse border border-slate-500 text-center">{hMarathonTime.h}</td>
-                    <td className="border-collapse border border-slate-500 text-center">{hMarathonTime.m}</td>
-                    <td className="border-collapse border border-slate-500 text-center">{hMarathonTime.s}</td>
+                    <td className="border-separate border-t border-slate-500"><span className="py-2 px-2">Half Marathon</span></td>
+                    <td className="border-separate border-t border-s border-slate-500 text-center"><span className="py-2 px-2">{hMarathonTime.h}</span></td>
+                    <td className="border-separate border-t border-s border-slate-500 text-center"><span className="py-2 px-2">{hMarathonTime.m}</span></td>
+                    <td className="border-separate border-t border-s border-slate-500 text-center"><span className="py-2 px-2">{hMarathonTime.s}</span></td>
                 </tr>
                 <tr>
-                <td className="border-collapse border border-slate-500">Marathon</td>
-                    <td className="border-collapse border border-slate-500 text-center">{marathonTime.h}</td>
-                    <td className="border-collapse border border-slate-500 text-center">{marathonTime.m}</td>
-                    <td className="border-collapse border border-slate-500 text-center">{marathonTime.s}</td>
+                <td className="border-separate border-t border-slate-500"><span className="py-2 px-2">Marathon</span></td>
+                    <td className="border-separate border-t border-s border-slate-500 text-center"><span className="py-2 px-2">{marathonTime.h}</span></td>
+                    <td className="border-separate border-t border-s border-slate-500 text-center"><span className="py-2 px-2">{marathonTime.m}</span></td>
+                    <td className="border-separate border-t border-s border-slate-500 text-center"><span className="py-2 px-2">{marathonTime.s}</span></td>
 
                 </tr>
                 </tbody>
             </table>
+ 
         </div>
    
     </div>
