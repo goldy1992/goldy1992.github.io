@@ -131,7 +131,8 @@ export default function PageContent() : JSX.Element {
                     <span className="block text-m leading-6">Units</span>
                     <div className="sm:flex sm:gap-x-2 sm:flex-wrap">
                         <div className="sm:flex-none flex items-center gap-x-3">
-                            <input type="radio" id="minPerKm" checked={isKm} onChange={() => setIsKm(true) } />
+                            <input type="radio" id="minPerKm" checked={isKm} onChange={() => setIsKm(true) }
+                            className="default:bg-neutral-200 dark:default:bg-neutral-800" />
                             <label htmlFor="minPerKm" className="pr-2 text-sm">min/km</label>
                         </div>
                         <div className="sm:flex-none flex items-center gap-x-3">

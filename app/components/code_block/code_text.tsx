@@ -1,14 +1,23 @@
 'use client'
 
 
-// compose semantics
+// punctuation
+export const comma = ","
+export const dot = "."
+export const functionClose = "}"
+export const functionOpen = "{"
+export const methodSignatureClose =")" 
+export const methodSignatureOpen = "("
+export const space = " "
 export const tab = "  "
 export const tab2 = tab + tab
 export const tab3 = tab2 + tab
 export const tab4 = tab2 + tab2
-export const comma = ","
-export const space = " "
-export const dot = "."
+
+export const initialGreeting = "Hello, I'm Mike, I work as a Full Stack Developer."
+export const initialGreetingString = "\"" + initialGreeting + "\""
+export const profilePictureFunction = "ProfilePicture"
+// Compose semantics
 export const alignment = "Alignment"
 export const arrangement = "Arrangement"
 export const background = "background"
@@ -16,12 +25,10 @@ export const center = "Center"
 export const centerHorizontally = "CenterHorizontally"
 export const column = "Column"
 export const colorScheme = "colorScheme"
-export const previewTag = "@Preview"
 export const composableTag = "@Composable" 
-export const privateFun = "private fun"
+export const dp = "dp"
 export const fillMaxSize = "fillMaxSize"
 export const methodName = "SayHello" 
-export const methodSignatureOpen = "("
 export const primaryContainer = "primaryContainer"
 export const materialTheme = "MaterialTheme"
 export const modifierLower = "modifier"
@@ -30,14 +37,14 @@ export const modifierDeclaration = modifierLower + ": " + modifierUpper + " = " 
 export const paramModifier = modifierLower + " = "
 export const paramHorizontalAlignment = "horizontalAlignment = "
 export const paramVerticalArrangement = "verticalArrangement = "
-export const methodSignatureClose =")" 
-export const textFun = "Text"
-//export const textFunOpen = "(" 
+export const previewTag = "@Preview"
+export const privateFun = "private fun"
 export const paramText = "text = "
-export const textValue = "\"Hello world\"" 
+export const sizeLower = "size"
+export const textFun = "Text"
 export const textFunClose = tab2 + methodSignatureClose
-export const functionClose = "}"
-export const functionOpen = "{"
+export const textValue = "\"Hello world\"" 
+
 
 
 export const cursor = "|"
