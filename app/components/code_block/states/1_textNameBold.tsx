@@ -43,7 +43,7 @@ export default function TextNameBold({onComplete}:
     }
 
     return (
-        <CodeBlock numberOfLines={20} >
+        <CodeBlock numberOfLines={24} >
             <ComposableAnnotation currentText={composableTag} cursorVisible={false} />
             <br/>
             <KotlinKeyword currentText={privateFun} cursorVisible={false} />

@@ -1,15 +1,15 @@
 import MultiTypeWriter from "@/components/typewriter/multi_typewriter"
 import { CodeBlock } from "../code_block"
-import { tab2, name, dot, comma, ComposableAnnotation, composableTag, KotlinKeyword, privateFun, KotlinMethodName, space, methodName, KotlinDefaultText, methodSignatureOpen, tab, modifierDeclaration, methodSignatureClose, functionOpen, KotlinFrameworkComposableOrObject, column, KotlinMethodParam, paramModifier, modifierLower, fillMaxSize, tab3, background, materialTheme, KotlinField, colorScheme, primaryContainer, textFun, paramText, KotlinString, functionClose, buildAnnotatedString, append, initialGreetingStart, tab4, withStyle, paramStyle, spanStyle, paramFontWeight, fontWeight, bold, tab5, initialGreetingMiddle, job, paramFontStyle, fontStyle, italic, profilePictureFunction, modifierUpper, sizeLower, dp, paramVerticalArrangement, arrangement, center, paramHorizontalAlignment, alignment, centerHorizontally } from "../code_text"
+import { tab2, name, dot, comma, ComposableAnnotation, composableTag, KotlinKeyword, privateFun, KotlinMethodName, space, methodName, KotlinDefaultText, methodSignatureOpen, tab, modifierDeclaration, methodSignatureClose, functionOpen, KotlinFrameworkComposableOrObject, column, KotlinMethodParam, paramModifier, modifierLower, fillMaxSize, tab3, background, materialTheme, KotlinField, colorScheme, primaryContainer, textFun, paramText, KotlinString, functionClose, buildAnnotatedString, append, initialGreetingStart, tab4, withStyle, paramStyle, spanStyle, paramFontWeight, fontWeight, bold, tab5, initialGreetingMiddle, job, paramFontStyle, fontStyle, italic, profilePictureFunction, modifierUpper, sizeLower, dp, paramVerticalArrangement, arrangement, center, paramHorizontalAlignment, alignment, centerHorizontally, paramTextAlign, textAlign, paramFontSize, sp } from "../code_text"
 
-export default function ProfilePicCenter({onComplete}: 
+export default function FontSizeLarger({onComplete}: 
     {
         onComplete? : () => void
     }) {
     const code_blocks = [
-        tab2 + paramHorizontalAlignment,
-        alignment + dot,
-        centerHorizontally,
+        tab3 + paramFontSize + space + "20",
+        dot,
+        sp,
         comma + space
     ]
     const [blocks, cursor_visible, cursorPosition] = MultiTypeWriter(code_blocks, onComplete)
@@ -55,10 +55,10 @@ export default function ProfilePicCenter({onComplete}:
             <KotlinDefaultText currentText={methodSignatureClose} cursorVisible={false} />
             <KotlinKeyword currentText={comma} cursorVisible={false}/>
             <br />
-            <KotlinMethodParam currentText={blocks[0]} cursorVisible={showCursorArray[0]} />
-            <KotlinDefaultText currentText={blocks[1]} cursorVisible={showCursorArray[1]} />
-            <KotlinField currentText={blocks[2]} cursorVisible={showCursorArray[2]} />
-            <KotlinDefaultText currentText={blocks[3]} cursorVisible={showCursorArray[3]} />
+            <KotlinMethodParam currentText={tab2 + paramHorizontalAlignment} cursorVisible={false} />
+            <KotlinDefaultText currentText={alignment + dot} cursorVisible={false} />
+            <KotlinField currentText={centerHorizontally} cursorVisible={false} />
+            <KotlinDefaultText currentText={comma} cursorVisible={false} />
             <br />
             <KotlinMethodParam currentText={tab2 + paramVerticalArrangement} cursorVisible={false} />
             <KotlinDefaultText currentText={arrangement + dot} cursorVisible={false} />
@@ -79,7 +79,18 @@ export default function ProfilePicCenter({onComplete}:
             <br />
             <KotlinFrameworkComposableOrObject currentText={tab2 + textFun} cursorVisible={false}/>
             <KotlinDefaultText currentText={methodSignatureOpen} cursorVisible={false} />
-            <KotlinMethodParam currentText={paramText} cursorVisible={false} />
+
+            <KotlinMethodParam currentText={paramTextAlign} cursorVisible={false}/>
+            <KotlinDefaultText currentText={space + textAlign + dot} cursorVisible={false} />
+            <KotlinField currentText={center} cursorVisible={false} />
+            <KotlinDefaultText currentText={comma} cursorVisible={false} />
+            <br />
+            <KotlinMethodParam currentText={blocks[0]} cursorVisible={showCursorArray[0]}/>
+            <KotlinDefaultText currentText={blocks[1]} cursorVisible={showCursorArray[1]} />
+            <KotlinField currentText={blocks[2]} cursorVisible={showCursorArray[2]} />
+            <KotlinDefaultText currentText={blocks[3]} cursorVisible={showCursorArray[3]} />
+            <br />
+            <KotlinMethodParam currentText={tab3+ paramText} cursorVisible={false} />
             <KotlinDefaultText currentText={buildAnnotatedString + space + functionOpen} cursorVisible={false} />
             <br />
             <KotlinDefaultText currentText={tab3 + append + methodSignatureOpen} cursorVisible={false} />

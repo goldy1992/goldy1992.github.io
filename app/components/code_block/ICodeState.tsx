@@ -12,5 +12,6 @@ export const State = {
     ProfilePic: 4,
     VerticalCenter: 5,
     ProfileCenter: 6,
-    TextCenter: 7
+    TextCenter: 7,
+    FontSizeLarger: 8
   } as const;

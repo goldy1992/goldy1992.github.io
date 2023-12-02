@@ -2,18 +2,17 @@
 import React, { useState, ReactNode } from "react"
 import MultiTypeWriter from "../typewriter/multi_typewriter"
 import CodeEditorTitleBar from "./header"
-import { ComposableAnnotation, KotlinDefaultText, KotlinKeyword, KotlinMethodName, background, colorScheme, column, comma, composableTag, dot, fillMaxSize, functionClose, functionOpen, materialTheme, methodName, methodSignatureClose, methodSignatureOpen, modifierDeclaration, modifierLower, paramModifier, previewTag, primaryContainer, privateFun, space, tab, tab2, tab3, textFun, textFunClose, paramText, textValue, KotlinFrameworkComposableOrObject, KotlinMethodParam, KotlinField, KotlinString, paramHorizontalAlignment, alignment, centerHorizontally, paramVerticalArrangement, arrangement, center } from "./code_text"
+import { composableTag, functionClose, methodName, methodSignatureClose, methodSignatureOpen, modifierDeclaration, privateFun, textFun, textFunClose, paramText, textValue } from "./code_text"
 import CodeRenderer from "./renderer"
-import { HelloWorldCodeBlock, InitialCodeBlock } from "./states/0_initialCodeBlock"
+import { InitialCodeBlock } from "./states/0_initialCodeBlock"
 import ICodeState from "./ICodeState"
-import HelloWorldCenteredBlock from "./states/greetingCentered"
-import ProfilePictureBlock from "./states/profile_picture"
 import TextNameBold from "./states/1_textNameBold"
 import TextJobItalics from "./states/2_textJobItalics"
 import VerticalCenter from "./states/4_verticalCenter"
 import ProfilePic from "./states/3_profilePic"
 import ProfilePicCenter from "./states/5_profilePic_center"
 import TextAlignCenter from "./states/6_textAlignCenter"
+import FontSizeLarger from "./states/7_fontSizeLarger"
 
 export function ModifierFillMaxSize({onComplete}: {onComplete? : () => void}) {
     const code_blocks = [ ""
@@ -89,9 +88,10 @@ export function TypingOrchestrator(
         (onComp: OnComplete) => (<TextNameBold onComplete={onComp}  />),
         (onComp: OnComplete) => (<TextJobItalics onComplete={onComp}  />),
         (onComp: OnComplete) => (<ProfilePic onComplete={onComp}  />),
-        // (onComp: OnComplete) => (<VerticalCenter onComplete={onComp}  />),
-        // (onComp: OnComplete) => (<ProfilePicCenter onComplete={onComp}  />),
-        // (onComp: OnComplete) => (<TextAlignCenter onComplete={onComp}  />),
+        (onComp: OnComplete) => (<VerticalCenter onComplete={onComp}  />),
+        (onComp: OnComplete) => (<ProfilePicCenter onComplete={onComp}  />),
+        (onComp: OnComplete) => (<TextAlignCenter onComplete={onComp}  />),
+        (onComp: OnComplete) => (<FontSizeLarger onComplete={onComp}  />),
     ]
 
 
@@ -103,7 +103,7 @@ export function TypingOrchestrator(
         let timeout = setTimeout(() => {
             let nextIdx = idx < (states.length - 1) ? idx + 1 : 0
             setCodeState({"currentIndex": nextIdx, "canRender": false})
-            }, 5000)  
+            }, 2000)  
         console.log("on complete returning")
         return () => clearTimeout(timeout); 
     }
