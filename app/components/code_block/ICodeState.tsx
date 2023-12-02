@@ -7,6 +7,10 @@ export default interface ICodeState {
 
 export const State = {
     Initial: 1,
-    Center: 2,
-    Image: 3
+    NameBold: 2,
+    JobItalic: 3,
+    ProfilePic: 4,
+    VerticalCenter: 5,
+    ProfileCenter: 6,
+    TextCenter: 7
   } as const;

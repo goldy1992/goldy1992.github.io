@@ -1,5 +1,5 @@
 
-export default function TextAlignCenter({onComplete}: 
+export default function VerticalCenter({onComplete}: 
     {
         onComplete? : () => void
     }) { 

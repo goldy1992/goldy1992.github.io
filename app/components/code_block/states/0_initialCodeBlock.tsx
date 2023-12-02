@@ -1,7 +1,6 @@
 import MultiTypeWriter from "../../typewriter/multi_typewriter"
 import { CodeBlock } from "../code_block"
-import { composableTag, privateFun, space, methodName, methodSignatureOpen, tab, modifierDeclaration, methodSignatureClose, functionOpen, column, tab2, paramModifier, modifierLower, dot, fillMaxSize, tab3, background, materialTheme, colorScheme, primaryContainer, comma, textFun, paramText, textValue, functionClose, ComposableAnnotation, KotlinKeyword, KotlinMethodName, KotlinDefaultText, KotlinFrameworkComposableOrObject, KotlinMethodParam, KotlinField, KotlinString, initialGreetingString } from "../code_text"
-
+import { composableTag, privateFun, space, methodName, methodSignatureOpen, tab, modifierDeclaration, methodSignatureClose, functionOpen, column, tab2, paramModifier, modifierLower, dot, fillMaxSize, tab3, background, materialTheme, colorScheme, primaryContainer, comma, textFun, paramText, textValue, functionClose, ComposableAnnotation, KotlinKeyword, KotlinMethodName, KotlinDefaultText, KotlinFrameworkComposableOrObject, KotlinMethodParam, KotlinField, KotlinString, initialGreetingFull } from "../code_text"
 
 
 export function InitialCodeBlock({onComplete}: 
@@ -26,7 +25,7 @@ export function InitialCodeBlock({onComplete}:
     }
 
     return (
-        <CodeBlock numberOfLines={16} >
+        <CodeBlock numberOfLines={20} >
             <ComposableAnnotation currentText={composableTag} cursorVisible={false} />
             <br/>
             <KotlinKeyword currentText={privateFun} cursorVisible={false} />
@@ -60,7 +59,7 @@ export function InitialCodeBlock({onComplete}:
             <KotlinDefaultText currentText={methodSignatureOpen} cursorVisible={false} />
             <br />
             <KotlinMethodParam currentText={tab3 + paramText} cursorVisible={false} />
-            <KotlinString currentText={initialGreetingString} cursorVisible={false} />
+            <KotlinString currentText={"\"" + initialGreetingFull + "\""} cursorVisible={false} />
             <br />
             <KotlinDefaultText currentText={tab2 + methodSignatureClose} cursorVisible={false} />
             <br />

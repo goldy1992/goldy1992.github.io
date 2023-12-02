@@ -13,14 +13,23 @@ export const tab = "  "
 export const tab2 = tab + tab
 export const tab3 = tab2 + tab
 export const tab4 = tab2 + tab2
+export const tab5 = tab4 + tab
 
-export const initialGreeting = "Hello, I'm Mike, I work as a Full Stack Developer."
-export const initialGreetingString = "\"" + initialGreeting + "\""
+export const initialGreetingStart = "Hello, I'm "
+export const initialGreetingMiddle = ", I work as a "
+export const name = "Mike"
+export const job = "Full Stack Developer"
+export const initialGreetingFull = initialGreetingStart + name + initialGreetingMiddle + job
+export const initialGreetingFullAsString = "\"" + initialGreetingFull + "\""
+
 export const profilePictureFunction = "ProfilePicture"
 // Compose semantics
 export const alignment = "Alignment"
+export const append = "append"
 export const arrangement = "Arrangement"
 export const background = "background"
+export const bold = "Bold"
+export const buildAnnotatedString = "buildAnnotatedString"
 export const center = "Center"
 export const centerHorizontally = "CenterHorizontally"
 export const column = "Column"
@@ -28,22 +37,30 @@ export const colorScheme = "colorScheme"
 export const composableTag = "@Composable" 
 export const dp = "dp"
 export const fillMaxSize = "fillMaxSize"
+export const fontStyle = "FontStyle"
+export const fontWeight = "FontWeight"
+export const italic = "Italic"
 export const methodName = "SayHello" 
-export const primaryContainer = "primaryContainer"
 export const materialTheme = "MaterialTheme"
 export const modifierLower = "modifier"
 export const modifierUpper = "Modifier"
 export const modifierDeclaration = modifierLower + ": " + modifierUpper + " = " + modifierUpper
 export const paramModifier = modifierLower + " = "
 export const paramHorizontalAlignment = "horizontalAlignment = "
+export const paramFontStyle = "fontStyle ="
+export const paramFontWeight = "fontWeight ="
+export const paramStyle = "style ="
 export const paramVerticalArrangement = "verticalArrangement = "
 export const previewTag = "@Preview"
+export const primaryContainer = "primaryContainer"
 export const privateFun = "private fun"
 export const paramText = "text = "
 export const sizeLower = "size"
+export const spanStyle = "SpanStyle"
 export const textFun = "Text"
 export const textFunClose = tab2 + methodSignatureClose
-export const textValue = "\"Hello world\"" 
+export const textValue = "\"Hello world\""
+export const withStyle = "withStyle"
 
 
 

@@ -8,6 +8,12 @@ import { HelloWorldCodeBlock, InitialCodeBlock } from "./states/0_initialCodeBlo
 import ICodeState from "./ICodeState"
 import HelloWorldCenteredBlock from "./states/greetingCentered"
 import ProfilePictureBlock from "./states/profile_picture"
+import TextNameBold from "./states/1_textNameBold"
+import TextJobItalics from "./states/2_textJobItalics"
+import VerticalCenter from "./states/4_verticalCenter"
+import ProfilePic from "./states/3_profilePic"
+import ProfilePicCenter from "./states/5_profilePic_center"
+import TextAlignCenter from "./states/6_textAlignCenter"
 
 export function ModifierFillMaxSize({onComplete}: {onComplete? : () => void}) {
     const code_blocks = [ ""
@@ -80,8 +86,12 @@ export function TypingOrchestrator(
 
     const states : ReactOnCompleteArray = [
         (onComp: OnComplete) => (<InitialCodeBlock onComplete={onComp}  />),
-        (onComp: OnComplete) => (<HelloWorldCenteredBlock onComplete={onComp}  />),
-        (onComp: OnComplete) => (<ProfilePictureBlock onComplete={onComp}  />),
+        (onComp: OnComplete) => (<TextNameBold onComplete={onComp}  />),
+        (onComp: OnComplete) => (<TextJobItalics onComplete={onComp}  />),
+        (onComp: OnComplete) => (<ProfilePic onComplete={onComp}  />),
+        // (onComp: OnComplete) => (<VerticalCenter onComplete={onComp}  />),
+        // (onComp: OnComplete) => (<ProfilePicCenter onComplete={onComp}  />),
+        // (onComp: OnComplete) => (<TextAlignCenter onComplete={onComp}  />),
     ]
 
 
