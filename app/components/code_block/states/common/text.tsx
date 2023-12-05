@@ -25,7 +25,7 @@ export default function Text({params = defaultTextParams}: {params? : ReactNode}
 export function TextAlignCenter() {
     return (
         <>
-            <KotlinMethodParam currentText={paramTextAlign} cursorVisible={false}/>
+            <KotlinMethodParam currentText={tab3 + paramTextAlign} cursorVisible={false}/>
             <KotlinDefaultText currentText={space + textAlign + dot} cursorVisible={false} />
             <KotlinField currentText={center} cursorVisible={false} />
             <KotlinDefaultText currentText={comma} cursorVisible={false} />
