@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { KotlinFrameworkComposableOrObject, tab, column, KotlinDefaultText, methodSignatureOpen, functionOpen, methodSignatureClose, space, functionClose, KotlinMethodParam, KotlinMethodName, dot, fillMaxSize, modifierLower, paramModifier, tab2, KotlinField, KotlinKeyword, background, colorScheme, comma, materialTheme, primaryContainer, tab3 } from "../../code_text";
+import { KotlinFrameworkComposableOrObject, tab, column, KotlinDefaultText, methodSignatureOpen, functionOpen, methodSignatureClose, space, functionClose, KotlinMethodParam, KotlinMethodName, dot, fillMaxSize, modifierLower, paramModifier, tab2, KotlinField, KotlinKeyword, background, colorScheme, comma, materialTheme, primaryContainer, tab3, arrangement, center, paramVerticalArrangement } from "../../code_text";
 
 export default function Column(
     {params, children}:
@@ -42,5 +42,38 @@ export function ColumnModifier() {
         <KotlinKeyword currentText={comma} cursorVisible={false}/>
 
         </>
+    )
+}
+
+export function ColumnVerticalArrangementCenter() {
+    return (
+    <>
+        <KotlinMethodParam currentText={tab2 + paramVerticalArrangement} cursorVisible={false} />
+        <KotlinDefaultText currentText={arrangement + dot} cursorVisible={false} />
+        <KotlinField currentText={center} cursorVisible={false} />
+        <KotlinDefaultText currentText={comma} cursorVisible={false} />
+    </>
+    )
+}
+
+export function ColumnHorizontalAlignmentCenterHz() {
+    return (
+    <>
+        <KotlinMethodParam currentText={tab2 + paramVerticalArrangement} cursorVisible={false} />
+        <KotlinDefaultText currentText={arrangement + dot} cursorVisible={false} />
+        <KotlinField currentText={center} cursorVisible={false} />
+        <KotlinDefaultText currentText={comma} cursorVisible={false} />
+    </>
+
+    )
+}
+
+export function FullColumnParams() {
+    return (
+    <>
+        <ColumnModifier />
+        <ColumnVerticalArrangementCenter />
+        <ColumnHorizontalAlignmentCenterHz />
+    </>
     )
 }

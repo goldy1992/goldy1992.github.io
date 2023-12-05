@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { KotlinDefaultText, methodSignatureOpen, tab2, methodSignatureClose, KotlinMethodParam, KotlinString, initialGreetingFull, paramText, tab3, KotlinFrameworkComposableOrObject, textFun } from "../../code_text";
+import { KotlinDefaultText, methodSignatureOpen, tab2, methodSignatureClose, KotlinMethodParam, KotlinString, initialGreetingFull, paramText, tab3, KotlinFrameworkComposableOrObject, textFun, KotlinField, center, comma, dot, paramTextAlign, space, textAlign } from "../../code_text";
 
 const defaultTextParams = (
     <>
@@ -21,3 +21,15 @@ export default function Text({params = defaultTextParams}: {params? : ReactNode}
         </>
     )
 }
+
+export function TextAlignCenter() {
+    return (
+        <>
+            <KotlinMethodParam currentText={paramTextAlign} cursorVisible={false}/>
+            <KotlinDefaultText currentText={space + textAlign + dot} cursorVisible={false} />
+            <KotlinField currentText={center} cursorVisible={false} />
+            <KotlinDefaultText currentText={comma} cursorVisible={false} />
+        </>
+    )
+}
+

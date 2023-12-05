@@ -40,7 +40,7 @@ export default function CodeRenderer({codeState} : {codeState: ICodeState}) :  R
         case State.ProfilePic:
             return (
                 <div>
-                     <img src='profile_pic.jpg' className='w-32 h-32 rounded-full border border-white' />
+                     <img src='profile_pic.jpg' className='w-32 h-32 rounded-full border border-white my-2' />
                     <span className='text-gray-800 dark:text-gray-200'>
                         {initialGreetingStart}
                         <span className='font-bold'>{name}</span>
@@ -52,7 +52,7 @@ export default function CodeRenderer({codeState} : {codeState: ICodeState}) :  R
         case State.VerticalCenter:
             return (
                 <div className='flex h-full flex-col justify-center'>
-                    <img src='profile_pic.jpg' className='w-32 h-32 rounded-full border border-white' />
+                    <img src='profile_pic.jpg' className='w-32 h-32 rounded-full border border-white my-2' />
                     <span className='text-gray-800 dark:text-gray-200'>
                         {initialGreetingStart}
                         <span className='font-bold'>{name}</span>
@@ -64,7 +64,7 @@ export default function CodeRenderer({codeState} : {codeState: ICodeState}) :  R
         case State.ProfileCenter:
             return (
                 <div className='flex h-full flex-col justify-center items-center'>
-                    <img src='profile_pic.jpg' className='w-32 h-32 rounded-full border border-white' />
+                    <img src='profile_pic.jpg' className='w-32 h-32 rounded-full border border-white  my-2' />
                     <div className='flex w-full'>
                         <span className='flex-grow text-gray-800 dark:text-gray-200'>
                             {initialGreetingStart}
@@ -78,7 +78,7 @@ export default function CodeRenderer({codeState} : {codeState: ICodeState}) :  R
         case State.TextCenter:
             return (
                 <div className='flex h-full flex-col justify-center items-center'>
-                    <img src='profile_pic.jpg' className='w-32 h-32 rounded-full border border-white' />
+                    <img src='profile_pic.jpg' className='w-32 h-32 rounded-full border border-white  my-2' />
                     <div className='flex w-full'>
                         <span className='flex-grow text-center text-gray-800 dark:text-gray-200'>
                             {initialGreetingStart}
@@ -92,7 +92,7 @@ export default function CodeRenderer({codeState} : {codeState: ICodeState}) :  R
         case State.FontSizeLarger:
             return (
                 <div className='flex h-full flex-col justify-center items-center'>
-                    <img src='profile_pic.jpg' className='w-32 h-32 rounded-full border border-white' />
+                    <img src='profile_pic.jpg' className='w-32 h-32 rounded-full border border-white my-2' />
                     <div className='flex w-full'>
                         <span className='flex-grow text-center text-2xl text-gray-800 dark:text-gray-200'>
                             {initialGreetingStart}

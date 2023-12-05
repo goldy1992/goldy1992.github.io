@@ -86,12 +86,12 @@ export function TypingOrchestrator(
     const states : ReactOnCompleteArray = [
         (onComp: OnComplete) => (<InitialCodeBlock onComplete={onComp}  />),
         (onComp: OnComplete) => (<TextNameBold onComplete={onComp}  />),
-        // (onComp: OnComplete) => (<TextJobItalics onComplete={onComp}  />),
-        // (onComp: OnComplete) => (<ProfilePic onComplete={onComp}  />),
-        // (onComp: OnComplete) => (<VerticalCenter onComplete={onComp}  />),
-        // (onComp: OnComplete) => (<ProfilePicCenter onComplete={onComp}  />),
-        // (onComp: OnComplete) => (<TextAlignCenter onComplete={onComp}  />),
-        // (onComp: OnComplete) => (<FontSizeLarger onComplete={onComp}  />),
+        (onComp: OnComplete) => (<TextJobItalics onComplete={onComp}  />),
+        (onComp: OnComplete) => (<ProfilePic onComplete={onComp}  />),
+        (onComp: OnComplete) => (<VerticalCenter onComplete={onComp}  />),
+        (onComp: OnComplete) => (<ProfilePicCenter onComplete={onComp}  />),
+        (onComp: OnComplete) => (<TextAlignCenter onComplete={onComp}  />),
+        (onComp: OnComplete) => (<FontSizeLarger onComplete={onComp}  />),
     ]
 
 
